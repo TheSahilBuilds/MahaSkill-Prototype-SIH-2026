@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-govt-navy: #062B52;
+  --color-govt-darknavy: #032447;
+  --color-govt-blue: #0B3B70;
+  --color-govt-[#F2A900]: #F2A900;
+  --color-govt-gold: #F2A900;
+  --color-govt-bg: #F5F7FA;
+  --color-govt-border: #D9E1EA;
+  --color-govt-text: #172B4D;
+  --color-govt-muted: #52657A;
+  --color-govt-green: #16A36A;
+  --color-govt-red: #D92D20;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #172B4D;
+  background-color: #F5F7FA;
+}
+
+body {
+  background-color: #F5F7FA;
+  color: #172B4D;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F7FA;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
