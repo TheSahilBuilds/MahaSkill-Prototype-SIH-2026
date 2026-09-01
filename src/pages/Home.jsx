@@ -19,10 +19,10 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 const HERO_SLIDES = [
   { id: 1, src: '/image/hero-slide-1.png', fallback: '/image/hero-fort.png', alt: 'Maharashtra Heritage & Skills' },
-  { id: 2, src: '/image/hero-slide-2.png', fallback: '/image/hero-fort.png', alt: 'Maharashtra Skill Intelligence Hub' },
-  { id: 3, src: '/image/hero-slide-3.png', fallback: '/image/hero-fort.png', alt: 'Maharashtra Industry Employment' },
-  { id: 4, src: '/image/hero-slide-4.png', fallback: '/image/hero-slide-4.jpg', alt: 'Youth Skill Training' },
-  { id: 5, src: '/image/hero-slide-5.png', fallback: '/image/hero-slide-5.jpg', alt: 'Future Ready Workforce' },
+  { id: 2, src: '/image/hero-slide-2.png', fallback: '/image/kailas-temple.webp', alt: 'Maharashtra Cultural & Skill Heritage' },
+  { id: 3, src: '/image/hero-slide-3.png', fallback: '/image/hero-fort.png', alt: 'Maharashtra Industry & Skill Employment' },
+  { id: 4, src: '/image/hero-slide-4.png', fallback: '/image/kailas-temple.webp', alt: 'Youth Skill Training' },
+  { id: 5, src: '/image/hero-slide-5.png', fallback: '/image/hero-fort.png', alt: 'Future Ready Workforce' },
 ];
 
 export default function Home() {
@@ -54,10 +54,10 @@ export default function Home() {
     <div className="space-y-10 pb-12">
       
       {/* 1. HERO SECTION WITH 5-IMAGE CROSSFADE SLIDESHOW */}
-      <section className="relative rounded-2xl overflow-hidden bg-white border border-[#D9E1EA] shadow-xs group">
+      <section className="relative rounded-2xl overflow-hidden bg-white border border-[#D9E1EA] shadow-xs group min-h-[380px]">
         
         {/* Background 5-Slide Images on Right Half */}
-        <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full z-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full z-0 overflow-hidden bg-slate-100">
           {HERO_SLIDES.map((slide, index) => (
             <img 
               key={slide.id}
@@ -68,9 +68,9 @@ export default function Home() {
                 ${index === currentSlide ? 'opacity-85 scale-100' : 'opacity-0 scale-105'}
               `}
               onError={(e) => {
-                if (e.target.src !== window.location.origin + '/image/hero-fort.png') {
-                  e.target.src = '/image/hero-fort.png';
-                }
+                // Prevent infinite loop on Vercel deployment and fall back gracefully
+                e.target.onerror = null;
+                e.target.src = slide.fallback;
               }}
             />
           ))}
@@ -402,7 +402,7 @@ export default function Home() {
       <section className="bg-[#062B52] text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col sm:flex-row justify-between items-center gap-4">
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 rounded-full bg-white/10 text-[#F2A900] flex items-center justify-center shrink-0">
-            <GraduationCap className="w-6 h-6" />
+            <GraduationCap className="w-[#F2A900] w-6 h-6" />
           </div>
           <div>
             <h3 className="font-bold text-base sm:text-lg">{t('ctaTitle')}</h3>
