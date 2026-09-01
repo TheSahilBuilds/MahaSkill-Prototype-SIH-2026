@@ -19,9 +19,9 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 const HERO_SLIDES = [
   { id: 1, src: '/image/hero-slide-1.png', fallback: '/image/hero-fort.png', alt: 'Maharashtra Heritage & Skills' },
-  { id: 2, src: '/image/hero-slide-2.png', fallback: '/image/kailas-temple.webp', alt: 'Maharashtra Cultural & Skill Heritage' },
-  { id: 3, src: '/image/hero-slide-3.png', fallback: '/image/hero-fort.png', alt: 'Maharashtra Industry & Skill Employment' },
-  { id: 4, src: '/image/hero-slide-4.png', fallback: '/image/kailas-temple.webp', alt: 'Youth Skill Training' },
+  { id: 2, src: '/image/hero-slide-2.png', fallback: '/image/hero-fort.png', alt: 'Maharashtra Skill Intelligence Hub' },
+  { id: 3, src: '/image/hero-slide-3.png', fallback: '/image/hero-fort.png', alt: 'Maharashtra Industry Employment' },
+  { id: 4, src: '/image/hero-slide-4.png', fallback: '/image/hero-fort.png', alt: 'Youth Skill Training' },
   { id: 5, src: '/image/hero-slide-5.png', fallback: '/image/hero-fort.png', alt: 'Future Ready Workforce' },
 ];
 
@@ -68,7 +68,6 @@ export default function Home() {
                 ${index === currentSlide ? 'opacity-85 scale-100' : 'opacity-0 scale-105'}
               `}
               onError={(e) => {
-                // Prevent infinite loop on Vercel deployment and fall back gracefully
                 e.target.onerror = null;
                 e.target.src = slide.fallback;
               }}
