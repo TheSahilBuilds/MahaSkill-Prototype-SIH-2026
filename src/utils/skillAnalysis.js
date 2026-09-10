@@ -6,40 +6,67 @@ export function optionToScore(val) {
   if (!val) return 1;
   const lower = String(val).toLowerCase();
 
-  if (lower.includes("advanced") || lower.includes("strong") || lower.includes("5+")) return 5;
-  if (lower.includes("intermediate") || lower.includes("good") || lower.includes("3–5") || lower.includes("3-5")) return 4;
-  if (lower.includes("basic") || lower.includes("1–2") || lower.includes("1-2")) return 2;
+  if (lower.includes("advanced") || lower.includes("strong") || lower.includes("5+") || lower.includes("multiple")) return 5;
+  if (lower.includes("intermediate") || lower.includes("good") || lower.includes("internship") || lower.includes("work experience")) return 4;
+  if (lower.includes("basic") || lower.includes("academic") || lower.includes("1–2") || lower.includes("1-2")) return 3;
   if (lower.includes("beginner") || lower.includes("none") || lower.includes("no experience") || lower.includes("needs improvement")) return 1;
   return 2;
 }
 
 export function performSkillGapAnalysis(surveyAnswers) {
-  const targetRole = surveyAnswers?.targetRole || "Software Developer";
-  const benchmark = SKILL_REQUIREMENTS_BENCHMARK[targetRole] || SKILL_REQUIREMENTS_BENCHMARK["Software Developer"];
+  const targetRole = surveyAnswers?.targetRole || "Data Analyst";
+  const benchmark = SKILL_REQUIREMENTS_BENCHMARK[targetRole] || SKILL_REQUIREMENTS_BENCHMARK["Data Analyst"] || SKILL_REQUIREMENTS_BENCHMARK["Software Developer"];
 
-  // Map 14-Question survey answers to user skill ratings
+  const currentSkills = surveyAnswers?.currentSkills || surveyAnswers?.progLanguages || ["Python", "SQL", "Excel"];
+  const profMap = surveyAnswers?.skillProficiency || {};
+  const skillsToImprove = surveyAnswers?.skillsToImprove || ["SQL", "Power BI"];
+  const expVal = surveyAnswers?.practicalExperience || surveyAnswers?.projectsCount || "Academic projects";
+
+  // Helper to resolve rating for a specific skill
+  const getSkillRating = (skillName) => {
+    // Check direct skill match in currentSkills
+    const isPresent = currentSkills.some(s => s.toLowerCase().includes(skillName.toLowerCase()) || skillName.toLowerCase().includes(s.toLowerCase()));
+    
+    if (isPresent) {
+      // Find matching key in profMap
+      const profKey = Object.keys(profMap).find(k => k.toLowerCase().includes(skillName.toLowerCase()) || skillName.toLowerCase().includes(k.toLowerCase()));
+      if (profKey && profMap[profKey]) {
+        return optionToScore(profMap[profKey]);
+      }
+      return 4; // default intermediate if selected without explicit level
+    }
+
+    const isMarkedForImprovement = skillsToImprove.some(s => s.toLowerCase().includes(skillName.toLowerCase()) || skillName.toLowerCase().includes(s.toLowerCase()));
+    if (isMarkedForImprovement) {
+      return 2; // Low score due to explicit gap
+    }
+
+    return 1; // Default beginner/missing
+  };
+
+  // Map survey answers to user skill ratings for benchmark evaluation
   const userSkillMap = {
-    "Programming": optionToScore(surveyAnswers?.skillLevel),
-    "Python": surveyAnswers?.progLanguages?.includes("Python") ? optionToScore(surveyAnswers?.skillLevel) : 1,
-    "JavaScript": surveyAnswers?.progLanguages?.includes("JavaScript") ? optionToScore(surveyAnswers?.skillLevel) : 1,
-    "Data Structures": optionToScore(surveyAnswers?.dsaLevel),
-    "SQL": optionToScore(surveyAnswers?.dbLevel),
-    "Git/GitHub": optionToScore(surveyAnswers?.gitLevel),
-    "Cloud": optionToScore(surveyAnswers?.cloudLevel),
-    "Machine Learning": optionToScore(surveyAnswers?.aiLevel),
-    "Data Analysis": optionToScore(surveyAnswers?.dbLevel),
-    "Statistics": optionToScore(surveyAnswers?.dsaLevel),
-    "Visualization": optionToScore(surveyAnswers?.dbLevel),
-    "HTML/CSS": surveyAnswers?.progLanguages?.includes("HTML/CSS") ? 4 : 1,
-    "React": surveyAnswers?.progLanguages?.includes("JavaScript") ? optionToScore(surveyAnswers?.skillLevel) : 1,
-    "Backend": optionToScore(surveyAnswers?.dbLevel),
-    "Networking": optionToScore(surveyAnswers?.cloudLevel),
-    "Linux": optionToScore(surveyAnswers?.gitLevel),
-    "Cybersecurity": optionToScore(surveyAnswers?.aiLevel),
-    "DevOps": optionToScore(surveyAnswers?.cloudLevel),
-    "Data Engineering": optionToScore(surveyAnswers?.dbLevel),
-    "Projects": optionToScore(surveyAnswers?.projectsCount),
-    "Communication": optionToScore(surveyAnswers?.commLevel)
+    "Programming": Math.max(getSkillRating("Python"), getSkillRating("Java"), getSkillRating("JavaScript"), getSkillRating("C++")),
+    "Python": getSkillRating("Python"),
+    "JavaScript": getSkillRating("JavaScript"),
+    "Data Structures": Math.max(getSkillRating("C++"), getSkillRating("Java"), getSkillRating("Python")),
+    "SQL": getSkillRating("SQL"),
+    "Git/GitHub": getSkillRating("Git"),
+    "Cloud": getSkillRating("Cloud"),
+    "Machine Learning": getSkillRating("Machine Learning"),
+    "Data Analysis": Math.max(getSkillRating("Python"), getSkillRating("Excel"), getSkillRating("SQL")),
+    "Statistics": Math.max(getSkillRating("Python"), getSkillRating("Excel")),
+    "Visualization": Math.max(getSkillRating("Power BI"), getSkillRating("Excel")),
+    "HTML/CSS": getSkillRating("HTML/CSS"),
+    "React": getSkillRating("React"),
+    "Backend": Math.max(getSkillRating("Java"), getSkillRating("Python"), getSkillRating("SQL")),
+    "Networking": getSkillRating("Cloud"),
+    "Linux": getSkillRating("Git"),
+    "Cybersecurity": getSkillRating("Cloud"),
+    "DevOps": Math.max(getSkillRating("Git"), getSkillRating("Cloud")),
+    "Data Engineering": Math.max(getSkillRating("SQL"), getSkillRating("Python")),
+    "Projects": optionToScore(expVal),
+    "Communication": 4
   };
 
   const reqSkills = benchmark.requiredSkills;
@@ -69,7 +96,7 @@ export function performSkillGapAnalysis(surveyAnswers) {
   });
 
   const skillAlignment = Math.min(100, Math.max(35, Math.round((totalUserScore / totalBenchmarkScore) * 100)));
-  const careerReadiness = Math.min(100, Math.max(40, Math.round(skillAlignment * 0.9 + (userSkillMap["Projects"] * 2.5))));
+  const careerReadiness = Math.min(100, Math.max(40, Math.round(skillAlignment * 0.85 + (userSkillMap["Projects"] * 3))));
 
   // Prioritized recommended next skills
   const recommendedSkills = [
@@ -83,11 +110,11 @@ export function performSkillGapAnalysis(surveyAnswers) {
     const userLvl = userSkillMap[reqKey] || 1;
     const reqLvl = reqSkills[reqKey] || 4;
 
-    let status = "Not Started"; // ○ Not started
+    let status = "Not Started";
     if (userLvl >= reqLvl) {
-      status = "Completed"; // ✓ Completed / Strong
+      status = "Completed";
     } else if (userLvl >= reqLvl - 1) {
-      status = "Current Focus"; // → Current focus
+      status = "Current Focus";
     }
 
     return {
@@ -101,7 +128,7 @@ export function performSkillGapAnalysis(surveyAnswers) {
 
   return {
     targetRole,
-    targetLocation: benchmark.targetLocation,
+    targetLocation: surveyAnswers?.district || benchmark.targetLocation || "Pune",
     industry: benchmark.industry,
     careerReadiness,
     skillAlignment,

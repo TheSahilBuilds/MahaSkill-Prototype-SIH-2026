@@ -13,7 +13,12 @@ import {
   PieChart as PieIcon,
   FileText,
   BarChart2,
-  Compass
+  Compass,
+  CheckCircle2,
+  TrendingUp,
+  ShieldCheck,
+  FileCheck,
+  Sparkles
 } from 'lucide-react';
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
@@ -46,15 +51,11 @@ export default function Home() {
     { name: 'Low Gap', value: 27, color: '#16A36A' }
   ];
 
-  const handleCheckSkillGap = () => {
-    navigate('/login');
-  };
-
   return (
     <div className="space-y-10 pb-12">
       
       {/* 1. HERO SECTION WITH 5-IMAGE CROSSFADE SLIDESHOW */}
-      <section className="relative rounded-2xl overflow-hidden bg-white border border-[#D9E1EA] shadow-xs group min-h-[380px]">
+      <section className="relative rounded-2xl overflow-hidden bg-white border border-[#D9E1EA] shadow-xs group min-h-[400px]">
         
         {/* Background 5-Slide Images on Right Half */}
         <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full z-0 overflow-hidden bg-slate-100">
@@ -75,7 +76,7 @@ export default function Home() {
           ))}
 
           {/* Subtle Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent lg:via-white/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent lg:via-white/60"></div>
 
           {/* Slideshow Navigation Controls */}
           <div className="absolute bottom-3 right-3 z-20 flex items-center gap-2 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
@@ -117,29 +118,36 @@ export default function Home() {
           {/* LEFT HERO TEXT & CTA */}
           <div className="lg:col-span-8 space-y-5">
             
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#062B52] leading-tight tracking-tight">
-              {t('heroTitle1')} <br />
-              <span className="text-[#F2A900]">{t('heroTitle2')}</span>
+            <div className="inline-flex items-center gap-2 bg-[#062B52]/10 border border-[#062B52]/20 px-3 py-1 rounded-full">
+              <ShieldCheck className="w-4 h-4 text-[#062B52]" />
+              <span className="text-xs font-bold text-[#062B52]">
+                {language === 'mr' ? 'SIH 2026 कौशल्याचे निकाल व प्रभाव मापन' : 'SIH 2026 Longitudinal Outcome Tracking'}
+              </span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-black text-[#062B52] leading-tight tracking-tight">
+              Measure Skills. Build Skills. <br />
+              <span className="text-[#F2A900]">Track Outcomes.</span>
             </h1>
 
             <p className="text-[#52657A] text-sm sm:text-base leading-relaxed max-w-xl font-normal">
-              {t('heroDesc')}
+              MahaSkill AI helps trainees identify skill gaps, find relevant training, build job-ready skills and track employment outcomes after training.
             </p>
 
             <div className="flex flex-wrap gap-3.5 pt-1">
-              <button
-                onClick={handleCheckSkillGap}
+              <Link
+                to="/login"
                 className="bg-[#062B52] hover:bg-[#0B3B70] text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-md flex items-center gap-2 hover:scale-[1.02]"
               >
-                <span>{t('btnCheckGap')}</span>
+                <span>Check My Skill Gap</span>
                 <ArrowRight className="w-4 h-4 text-[#F2A900]" />
-              </button>
+              </Link>
               
               <Link
-                to="/industry-requirements"
+                to="/my-dashboard"
                 className="bg-white/90 backdrop-blur-xs hover:bg-slate-50 text-[#172B4D] border border-[#D9E1EA] px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-2xs flex items-center gap-2"
               >
-                <span>{t('btnExploreReq')}</span>
+                <span>Explore Outcomes</span>
               </Link>
             </div>
 
@@ -147,44 +155,45 @@ export default function Home() {
 
           {/* RIGHT HERO STATISTICS CARD */}
           <div className="lg:col-span-4">
-            <div className="bg-white/80 backdrop-blur-md p-3.5 sm:p-4 rounded-xl border border-white/60 shadow-md space-y-2.5 max-w-xs ml-auto">
+            <div className="bg-white/90 backdrop-blur-md p-4 rounded-xl border border-slate-200/80 shadow-md space-y-3 max-w-xs ml-auto">
               
-              <h3 className="font-bold text-xs sm:text-sm text-[#062B52] border-b border-slate-200/80 pb-1.5">
-                {t('landscapeTitle')}
+              <h3 className="font-bold text-xs sm:text-sm text-[#062B52] border-b border-slate-200/80 pb-1.5 flex items-center justify-between">
+                <span>Skilling Impact Metrics</span>
+                <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-extrabold">LIVE</span>
               </h3>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 
-                <div className="p-2 bg-white/90 rounded-lg border border-slate-200/60 space-y-0.5">
-                  <div className="flex items-center gap-1.5">
+                <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-0.5">
+                  <div className="flex items-center gap-1">
                     <Users className="w-3.5 h-3.5 text-[#0B3B70]" />
-                    <span className="text-base font-extrabold text-[#062B52] font-mono">12.5L+</span>
+                    <span className="text-base font-extrabold text-[#062B52]">25.4K</span>
                   </div>
-                  <div className="text-[10px] font-semibold text-[#52657A] leading-tight">{t('studentsAnalyzed')}</div>
+                  <div className="text-[10px] font-semibold text-slate-500">Trainees Tracked</div>
                 </div>
 
-                <div className="p-2 bg-white/90 rounded-lg border border-slate-200/60 space-y-0.5">
-                  <div className="flex items-center gap-1.5">
-                    <Briefcase className="w-3.5 h-3.5 text-[#0B3B70]" />
-                    <span className="text-base font-extrabold text-[#062B52] font-mono">2100+</span>
+                <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-0.5">
+                  <div className="flex items-center gap-1">
+                    <Briefcase className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="text-base font-extrabold text-emerald-700">66.9%</span>
                   </div>
-                  <div className="text-[10px] font-semibold text-[#52657A] leading-tight">{t('jobRolesCovered')}</div>
+                  <div className="text-[10px] font-semibold text-slate-500">Placed Trainees</div>
                 </div>
 
-                <div className="p-2 bg-white/90 rounded-lg border border-slate-200/60 space-y-0.5">
-                  <div className="flex items-center gap-1.5">
-                    <Building2 className="w-3.5 h-3.5 text-[#0B3B70]" />
-                    <span className="text-base font-extrabold text-[#062B55] font-mono">850+</span>
+                <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-0.5">
+                  <div className="flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-600" />
+                    <span className="text-base font-extrabold text-purple-700">58.4%</span>
                   </div>
-                  <div className="text-[10px] font-semibold text-[#52657A] leading-tight">{t('industriesMapped')}</div>
+                  <div className="text-[10px] font-semibold text-slate-500">6-Mo Retention</div>
                 </div>
 
-                <div className="p-2 bg-white/90 rounded-lg border border-slate-200/60 space-y-0.5">
-                  <div className="flex items-center gap-1.5">
-                    <Target className="w-3.5 h-3.5 text-[#0B3B70]" />
-                    <span className="text-base font-extrabold text-[#16A36A] font-mono">85%</span>
+                <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-0.5">
+                  <div className="flex items-center gap-1">
+                    <TrendingUp className="w-3.5 h-3.5 text-[#062B52]" />
+                    <span className="text-base font-extrabold text-[#062B52]">+39%</span>
                   </div>
-                  <div className="text-[10px] font-semibold text-[#52657A] leading-tight">{t('alignmentGoal')}</div>
+                  <div className="text-[10px] font-semibold text-slate-500">Avg Wage Growth</div>
                 </div>
 
               </div>
@@ -195,69 +204,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. HOW MAHA SKILL WORKS */}
+      {/* 2. CORE CONCEPT WORKFLOW: TRAINING -> OUTCOME -> FOLLOW-UP -> INSIGHT -> ACTION */}
       <section className="space-y-6 text-center">
         <div>
           <div className="inline-block text-xs font-bold text-[#0B3B70] uppercase tracking-wider mb-1">
-            — {language === 'mr' ? 'महास्किल कसे कार्य करते' : 'How MahaSkill Works'} —
+            — Outcome & Impact Workflow —
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#062B52]">{t('howItWorksTitle')}</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#062B52]">
+            Training → Outcome → Follow-up → Insight → Action
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-left">
           {[
             {
               step: "01",
-              title: t('step1Title'),
-              desc: t('step1Desc'),
-              icon: FileText
+              title: "Training Record",
+              desc: "Consent-based trainee record created with course, provider & certification status.",
+              path: "/my-training"
             },
             {
               step: "02",
-              title: t('step2Title'),
-              desc: t('step2Desc'),
-              icon: BarChart2
+              title: "Outcome Tracking",
+              desc: "Capture employed, self-employed, apprenticeship, or job-seeking status.",
+              path: "/my-training"
             },
             {
               step: "03",
-              title: t('step3Title'),
-              desc: t('step3Desc'),
-              icon: PieIcon
+              title: "Follow-up System",
+              desc: "Automated 30, 90, 180-day and 12-month follow-ups to measure wage & retention.",
+              path: "/my-training"
             },
             {
               step: "04",
-              title: t('step4Title'),
-              desc: t('step4Desc'),
-              icon: Compass
+              title: "Skill Insight",
+              desc: "Identify skill gaps and reasons for non-placement or employment attrition.",
+              path: "/skill-gap"
+            },
+            {
+              step: "05",
+              title: "Personalized Action",
+              desc: "Recommended upskilling roadmap for trainees and intervention for government.",
+              path: "/roadmap"
             }
-          ].map((card) => {
-            const Icon = card.icon;
-            return (
-              <div 
-                key={card.step} 
-                onClick={handleCheckSkillGap}
-                className="bg-white p-5 rounded-xl border border-[#D9E1EA] shadow-2xs hover:shadow-md transition space-y-3 relative flex flex-col justify-between cursor-pointer"
-              >
-                <div className="flex justify-between items-start">
-                  <span className="font-mono text-xs font-bold bg-[#062B52] text-white px-2 py-0.5 rounded">
-                    {card.step}
-                  </span>
-                  <div className="w-8 h-8 rounded-lg bg-[#F5F7FA] text-[#0B3B70] flex items-center justify-center border border-slate-200">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="font-bold text-sm text-[#062B52] mb-1">{card.title}</h3>
-                  <p className="text-xs text-[#52657A] leading-relaxed">{card.desc}</p>
-                </div>
-
-                <div className="pt-2 text-right">
-                  <ChevronRight className="w-4 h-4 text-slate-300 inline" />
-                </div>
+          ].map((card) => (
+            <Link 
+              key={card.step} 
+              to={card.path}
+              className="bg-white p-4 rounded-xl border border-[#D9E1EA] shadow-2xs hover:shadow-md transition space-y-2 relative flex flex-col justify-between group"
+            >
+              <div className="flex justify-between items-start">
+                <span className="font-mono text-xs font-bold bg-[#062B52] text-[#F2A900] px-2 py-0.5 rounded">
+                  {card.step}
+                </span>
+                <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#062B52] transition-colors" />
               </div>
-            );
-          })}
+
+              <div>
+                <h3 className="font-bold text-sm text-[#062B52]">{card.title}</h3>
+                <p className="text-xs text-[#52657A] leading-snug mt-1">{card.desc}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -267,24 +275,24 @@ export default function Home() {
         {/* CARD 1: Top In-Demand Skills */}
         <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-[#D9E1EA] shadow-2xs space-y-4">
           <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h3 className="font-bold text-sm text-[#062B52]">{t('topSkillsTitle')}</h3>
-            <Link to="/industry-requirements" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">
-              {language === 'mr' ? 'सर्व पहा' : 'View All'}
+            <h3 className="font-bold text-sm text-[#062B52]">Top Trainee Skill Gaps</h3>
+            <Link to="/skill-gap" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">
+              View Skill Intelligence
             </Link>
           </div>
 
           <div className="space-y-3.5">
             {[
-              { name: "Python", val: 82 },
-              { name: "SQL", val: 76 },
-              { name: "Cloud Computing", val: 68 },
-              { name: "Data Analytics", val: 61 },
-              { name: "Generative AI", val: 54 }
+              { name: "SQL & Query Optimization", val: 82, gap: "High Priority" },
+              { name: "Power BI & DAX Calculations", val: 76, gap: "High Priority" },
+              { name: "Python Data Structures", val: 68, gap: "Medium Priority" },
+              { name: "Git Collaborative Workflow", val: 61, gap: "Medium Priority" },
+              { name: "Cloud Deployment (AWS/Docker)", val: 54, gap: "High Priority" }
             ].map(skill => (
               <div key={skill.name} className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-[#172B4D]">
                   <span>{skill.name}</span>
-                  <span className="font-mono text-[#0B3B70]">{skill.val}%</span>
+                  <span className="font-mono text-rose-700 font-bold">{skill.gap}</span>
                 </div>
                 <div className="w-full bg-[#F5F7FA] rounded-full h-2 overflow-hidden border border-slate-200">
                   <div className="bg-[#062B52] h-full rounded-full" style={{ width: `${skill.val}%` }}></div>
@@ -294,16 +302,16 @@ export default function Home() {
           </div>
 
           <div className="pt-2 text-[10px] text-slate-400 font-mono">
-            {language === 'mr' ? 'स्रोत: उद्योग डेटा विश्लेषण' : 'Source: Industry Data Analysis'}
+            Source: MahaSkill Deterministic Analysis Engine
           </div>
         </div>
 
         {/* CARD 2: Skill Gap Overview (Donut Chart) */}
         <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-[#D9E1EA] shadow-2xs space-y-4 flex flex-col justify-between">
           <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h3 className="font-bold text-sm text-[#062B52]">{t('skillGapOverview')}</h3>
-            <Link to="/skill-gap" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">
-              {language === 'mr' ? 'अहवाल पहा' : 'View Report'}
+            <h3 className="font-bold text-sm text-[#062B52]">Trainee Outcome Alignment</h3>
+            <Link to="/outcome-dashboard" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">
+              Admin Analytics
             </Link>
           </div>
 
@@ -327,9 +335,9 @@ export default function Home() {
               </PieChart>
             </ResponsiveContainer>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <span className="text-2xl font-extrabold text-[#062B52]">29%</span>
+              <span className="text-2xl font-extrabold text-[#062B52]">66.9%</span>
               <span className="text-[10px] font-medium text-[#52657A]">
-                {language === 'mr' ? 'सरासरी कौशल्य तफावत' : 'Average Skill Gap'}
+                Employment Placement Rate
               </span>
             </div>
           </div>
@@ -337,60 +345,51 @@ export default function Home() {
           {/* Legend */}
           <div className="flex justify-around text-xs font-semibold pt-1 border-t border-slate-100">
             <span className="flex items-center gap-1">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#D92D20]"></span>
-              <span className="text-slate-700">{language === 'mr' ? 'उच्च' : 'High'} <strong>32%</strong></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#16A36A]"></span>
+              <span className="text-slate-700">Placed <strong>66.9%</strong></span>
             </span>
             <span className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 rounded-full bg-[#F2A900]"></span>
-              <span className="text-slate-700">{language === 'mr' ? 'मध्यम' : 'Medium'} <strong>41%</strong></span>
+              <span className="text-slate-700">Self-Employed <strong>9.1%</strong></span>
             </span>
             <span className="flex items-center gap-1">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#16A36A]"></span>
-              <span className="text-slate-700">{language === 'mr' ? 'कमी' : 'Low'} <strong>27%</strong></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#D92D20]"></span>
+              <span className="text-slate-700">Seeking <strong>24%</strong></span>
             </span>
           </div>
 
           <div className="text-[11px] text-[#52657A] italic text-center">
-            {language === 'mr' ? 'शिकत राहा. प्रगती करत राहा.' : 'Keep learning. Keep growing.'}
+            Longitudinal skilling outcome verification active.
           </div>
         </div>
 
-        {/* CARD 3: Maharashtra Focus */}
+        {/* CARD 3: Maharashtra District Performance */}
         <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-[#D9E1EA] shadow-2xs space-y-4">
           <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h3 className="font-bold text-sm text-[#062B52]">{t('mahaFocus')}</h3>
-            <span className="text-[11px] font-semibold text-[#0B3B70]">{language === 'mr' ? 'प्रमुख हब' : 'Key Clusters'}</span>
+            <h3 className="font-bold text-sm text-[#062B52]">District Placement Leaderboard</h3>
+            <Link to="/outcome-dashboard" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">Full District Map</Link>
           </div>
 
-          <div className="space-y-3">
-            <div className="h-28 bg-[#F5F7FA] rounded-xl border border-slate-200 flex items-center justify-center overflow-hidden p-2">
-              <img 
-                src="/image/maharashtra-map.png" 
-                alt="Maharashtra Map" 
-                className="max-h-full max-w-full object-contain"
-                onError={(e) => {
-                  e.target.src = '/image/maharashtra-map.webp';
-                }}
-              />
+          <div className="space-y-2 text-xs">
+            <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
+              <span className="font-bold text-[#062B52]">Pune</span>
+              <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">78% Placed (71.5% Retention)</span>
             </div>
-
-            <div className="space-y-2 text-xs">
-              <div className="flex justify-between items-center border-b border-slate-100 pb-1">
-                <span className="font-bold text-[#062B52]">{language === 'mr' ? 'पुणे' : 'Pune'}</span>
-                <span className="text-[#52657A]">IT | AI | Automation</span>
-              </div>
-              <div className="flex justify-between items-center border-b border-slate-100 pb-1">
-                <span className="font-bold text-[#062B52]">{language === 'mr' ? 'मुंबई' : 'Mumbai'}</span>
-                <span className="text-[#52657A]">Finance | Analytics | IT</span>
-              </div>
-              <div className="flex justify-between items-center border-b border-slate-100 pb-1">
-                <span className="font-bold text-[#062B52]">{language === 'mr' ? 'नागपूर' : 'Nagpur'}</span>
-                <span className="text-[#52657A]">Logistics | IT Services</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-[#062B52]">{language === 'mr' ? 'नाशिक' : 'Nashik'}</span>
-                <span className="text-[#52657A]">Manufacturing | Auto</span>
-              </div>
+            <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
+              <span className="font-bold text-[#062B52]">Mumbai City & Suburbs</span>
+              <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">75% Placed (68.2% Retention)</span>
+            </div>
+            <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
+              <span className="font-bold text-[#062B52]">Thane</span>
+              <span className="text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded">70.9% Placed (64.0% Retention)</span>
+            </div>
+            <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
+              <span className="font-bold text-[#062B52]">Nashik</span>
+              <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded">64% Placed (57.5% Retention)</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="font-bold text-[#062B52]">Nagpur</span>
+              <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded">61% Placed (54.8% Retention)</span>
             </div>
           </div>
         </div>
@@ -401,21 +400,23 @@ export default function Home() {
       <section className="bg-[#062B52] text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col sm:flex-row justify-between items-center gap-4">
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 rounded-full bg-white/10 text-[#F2A900] flex items-center justify-center shrink-0">
-            <GraduationCap className="w-[#F2A900] w-6 h-6" />
+            <GraduationCap className="w-6 h-6 text-[#F2A900]" />
           </div>
           <div>
-            <h3 className="font-bold text-base sm:text-lg">{t('ctaTitle')}</h3>
-            <p className="text-slate-300 text-xs sm:text-sm">{t('ctaDesc')}</p>
+            <h3 className="font-bold text-base sm:text-lg">Ready to measure training outcomes & upskill?</h3>
+            <p className="text-slate-300 text-xs sm:text-sm">Update your training outcome status or view administrative analytics.</p>
           </div>
         </div>
 
-        <button
-          onClick={handleCheckSkillGap}
-          className="bg-[#062B52] hover:bg-[#0B3B70] border border-[#F2A900] text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-xs flex items-center gap-2 shrink-0"
-        >
-          <span>{t('btnGetStarted')}</span>
-          <ArrowRight className="w-4 h-4 text-[#F2A900]" />
-        </button>
+        <div className="flex items-center gap-3 shrink-0">
+          <Link
+            to="/my-training"
+            className="bg-[#F2A900] hover:bg-amber-400 text-[#032447] px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-xs flex items-center gap-2"
+          >
+            <span>Update My Outcome</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </section>
 
     </div>

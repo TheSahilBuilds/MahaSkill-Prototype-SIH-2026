@@ -8,12 +8,15 @@ import {
   X, 
   ChevronRight,
   ArrowRight,
-  RotateCcw
+  RotateCcw,
+  ShieldCheck,
+  GraduationCap,
+  Building2
 } from 'lucide-react';
 import RajyageetModal from './RajyageetModal';
 
 export default function GovernmentHeader() {
-  const { language, toggleLanguage, user, resetDemo, t } = useApp();
+  const { language, toggleLanguage, user, resetDemo, t, userRole, setUserRole } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRajyageetOpen, setIsRajyageetOpen] = useState(false);
   const location = useLocation();
@@ -22,13 +25,23 @@ export default function GovernmentHeader() {
     document.documentElement.style.fontSize = `${100 + delta}%`;
   };
 
-  const navLinks = [
-    { name: t('home'), path: '/' },
-    { name: t('roadmap'), path: '/roadmap' },
-    { name: t('industryReq'), path: '/industry-requirements' },
-    { name: t('aboutUs'), path: '/about' },
-    { name: t('contactUs'), path: '/about#contact' },
-  ];
+  const navLinks = userRole === 'admin'
+    ? [
+        { name: language === 'mr' ? 'मुख्य पृष्ठ' : 'Home', path: '/' },
+        { name: language === 'mr' ? 'निकाल डॅशबोर्ड' : 'Outcome Dashboard', path: '/outcome-dashboard' },
+        { name: language === 'mr' ? 'कौशल्य बुद्धिमत्ता' : 'Skill Intelligence', path: '/skill-gap' },
+        { name: language === 'mr' ? 'कार्यक्रम विश्लेषण' : 'Programmes', path: '/industry-requirements' },
+        { name: language === 'mr' ? 'आमच्याबद्दल' : 'About', path: '/about' },
+      ]
+    : [
+        { name: language === 'mr' ? 'मुख्य पृष्ठ' : 'Home', path: '/' },
+        { name: language === 'mr' ? 'माझे प्रशिक्षण' : 'My Training', path: '/my-training' },
+        { name: language === 'mr' ? 'माझे निकाल' : 'My Outcomes', path: '/my-dashboard' },
+        { name: language === 'mr' ? 'कौशल्य बुद्धिमत्ता' : 'Skill Intelligence', path: '/skill-gap' },
+        { name: language === 'mr' ? 'करिअर रोडमॅप' : 'Roadmap', path: '/roadmap' },
+        { name: language === 'mr' ? 'उद्योग गरजा' : 'Industry Requirements', path: '/industry-requirements' },
+        { name: language === 'mr' ? 'आमच्याबद्दल' : 'About', path: '/about' },
+      ];
 
   return (
     <header className="w-full bg-white select-none shadow-xs border-b border-[#D9E1EA]">
@@ -50,9 +63,30 @@ export default function GovernmentHeader() {
             </span>
           </div>
 
-          {/* CENTER */}
-          <div className="hidden md:block font-bold text-[#F2A900] tracking-wider text-xs font-serif">
-            ॥ जय महाराष्ट्र ॥
+          {/* CENTER ROLE SWITCHER TOGGLE */}
+          <div className="flex items-center gap-1 bg-slate-800/90 p-0.5 rounded-lg border border-slate-700">
+            <button
+              onClick={() => setUserRole('trainee')}
+              className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-bold transition ${
+                userRole === 'trainee' 
+                  ? 'bg-[#F2A900] text-[#032447] shadow-2xs' 
+                  : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              <GraduationCap className="w-3 h-3" />
+              <span>{language === 'mr' ? 'प्रशिक्षणार्थी मोड' : 'Trainee View'}</span>
+            </button>
+            <button
+              onClick={() => setUserRole('admin')}
+              className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-bold transition ${
+                userRole === 'admin' 
+                  ? 'bg-[#F2A900] text-[#032447] shadow-2xs' 
+                  : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              <Building2 className="w-3 h-3" />
+              <span>{language === 'mr' ? 'शासकीय विश्लेषण मोड' : 'Government View'}</span>
+            </button>
           </div>
 
           {/* RIGHT CONTROLS */}
@@ -138,22 +172,22 @@ export default function GovernmentHeader() {
               Maha<span className="text-[#F2A900]">Skill</span>
             </span>
             <span className="text-[10px] sm:text-[11px] text-[#52657A] font-semibold leading-tight hidden sm:block">
-              {language === 'mr' ? 'महाराष्ट्र कौशल्य बुद्धिमत्ता मंच' : 'Maharashtra Skill Intelligence Platform'}
+              {language === 'mr' ? 'महाराष्ट्र कौशल्य व प्रभाव मापन मंच' : 'Maharashtra Skill Outcome & Impact System'}
             </span>
           </div>
         </Link>
 
         {/* DESKTOP NAVIGATION & LOGIN */}
-        <div className="hidden lg:flex items-center space-x-6">
-          <nav className="flex items-center space-x-5 text-sm font-semibold text-[#172B4D]">
+        <div className="hidden lg:flex items-center space-x-5">
+          <nav className="flex items-center space-x-4 text-xs font-bold text-[#172B4D]">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.path || (link.path.includes('#') && location.pathname === '/about');
+              const isActive = location.pathname === link.path;
               return (
                 <Link
                   key={link.name}
                   to={link.path}
                   className={`py-1 relative transition-colors hover:text-[#0B3B70] ${
-                    isActive ? 'text-[#0B3B70] font-bold' : 'text-[#172B4D]'
+                    isActive ? 'text-[#0B3B70] font-extrabold' : 'text-[#172B4D]'
                   }`}
                 >
                   {link.name}
@@ -168,7 +202,7 @@ export default function GovernmentHeader() {
           {/* Login / Profile Button */}
           <Link
             to="/login"
-            className="bg-[#062B52] hover:bg-[#0B3B70] text-white px-5 py-2 rounded-lg font-bold text-xs shadow-xs transition flex items-center gap-2"
+            className="bg-[#062B52] hover:bg-[#0B3B70] text-white px-4 py-2 rounded-lg font-bold text-xs shadow-xs transition flex items-center gap-1.5"
           >
             <User className="w-3.5 h-3.5" />
             <span>{user?.name ? `${user.name}` : t('loginReg')}</span>
@@ -188,6 +222,24 @@ export default function GovernmentHeader() {
       {/* MOBILE NAVIGATION DRAWER */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white border-t border-[#D9E1EA] px-4 py-4 space-y-3 shadow-lg">
+          <div className="flex items-center justify-between p-2 bg-slate-100 rounded-lg">
+            <span className="text-xs font-bold text-[#032447]">View Mode:</span>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => setUserRole('trainee')}
+                className={`px-2 py-1 rounded text-xs font-bold ${userRole === 'trainee' ? 'bg-[#062B52] text-white' : 'text-slate-600'}`}
+              >
+                Trainee
+              </button>
+              <button
+                onClick={() => setUserRole('admin')}
+                className={`px-2 py-1 rounded text-xs font-bold ${userRole === 'admin' ? 'bg-[#062B52] text-white' : 'text-slate-600'}`}
+              >
+                Govt Admin
+              </button>
+            </div>
+          </div>
+
           <nav className="flex flex-col space-y-2 text-sm font-semibold text-[#172B4D]">
             {navLinks.map((link) => (
               <Link
@@ -219,17 +271,18 @@ export default function GovernmentHeader() {
       <div className="bg-[#FFFBEB] border-t border-b border-[#FDE68A] text-[#172B4D] text-xs py-2 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center space-x-2.5 overflow-hidden">
-            <span className="bg-[#F2A900] text-[#032447] text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow-2xs shrink-0">
-              महत्वाची सूचना 📢
+            <span className="bg-[#F2A900] text-[#032447] text-[10px] font-extrabold uppercase px-2 py-0.5 rounded shadow-2xs shrink-0 flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3" />
+              कौशल्य निकाल प्रणाली 📢
             </span>
             <div className="truncate font-medium text-xs sm:text-sm text-[#172B4D]">
               {language === 'mr' 
-                ? 'महास्किल प्लॅटफॉर्मवर आपले स्वागत आहे. आपल्या कौशल्यांचा आढावा घ्या आणि योग्य करिअर मार्ग शोधा.'
-                : 'Welcome to MahaSkill. Analyze your skills and discover the right career roadmap.'}
+                ? 'कौशल्य प्रशिक्षण ते रोजगार प्रभाव मापन प्रणाली. आपले निकाल अपडेट करा व करिअर प्रगती पहा.'
+                : 'Longitudinal Skilling Outcome System. Track your training, employment signals, and upskilling.'}
             </div>
           </div>
-          <Link to="/industry-requirements" className="text-xs font-bold text-[#0B3B70] hover:underline shrink-0 flex items-center gap-1">
-            <span>{language === 'mr' ? 'सर्व सूचना पहा' : 'View All Notices'}</span>
+          <Link to="/my-training" className="text-xs font-bold text-[#0B3B70] hover:underline shrink-0 flex items-center gap-1">
+            <span>{language === 'mr' ? 'माझे निकाल पहा' : 'Update Outcome'}</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#0B3B70]" />
           </Link>
         </div>

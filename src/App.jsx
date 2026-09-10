@@ -9,12 +9,15 @@ import AIAdvisor from './components/AIAdvisor';
 
 // Pages
 import Home from './pages/Home';
+import MyTraining from './pages/MyTraining';
+import OutcomeDashboard from './pages/OutcomeDashboard';
 import SkillRoadmap from './pages/SkillRoadmap';
 import IndustryRequirements from './pages/IndustryRequirements';
 import About from './pages/About';
 import Login from './pages/Login';
 import SkillGap from './pages/SkillGap';
 import Survey from './pages/Survey';
+import MyOutcomeDashboard from './pages/MyOutcomeDashboard';
 
 function AppLayout() {
   return (
@@ -28,6 +31,9 @@ function AppLayout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/my-training" element={<MyTraining />} />
+          <Route path="/my-dashboard" element={<MyOutcomeDashboard />} />
+          <Route path="/outcome-dashboard" element={<OutcomeDashboard />} />
           <Route path="/survey" element={<Survey />} />
           <Route path="/skill-gap" element={<SkillGap />} />
           <Route path="/roadmap" element={<SkillRoadmap />} />

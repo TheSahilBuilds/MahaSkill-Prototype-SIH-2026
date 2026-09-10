@@ -1,0 +1,190 @@
+================================================================================
+                         MAHASKILL AI - COMPLETE PROJECT DOCUMENTATION
+================================================================================
+Project Title: MahaSkill AI (MahaSkill-AI)
+Context: Smart India Hackathon (SIH) 2026 Prototype
+Affiliation: Aligned with Maharashtra State Skill Development Society (MSSDS) &
+             Department of Skills, Employment, Entrepreneurship & Innovation,
+             Government of Maharashtra
+Target Region: Maharashtra (Pune, Mumbai, Nagpur, Nashik, Chhatrapati Sambhajinagar,
+               Thane, Kolhapur, etc.)
+
+--------------------------------------------------------------------------------
+1. EXECUTIVE SUMMARY & VISION
+--------------------------------------------------------------------------------
+MahaSkill AI is an AI-powered skill intelligence, career guidance, and longitudinal
+outcome tracking platform designed specifically for the state of Maharashtra under SIH 2026. 
+
+Vision:
+"Build a skilled, employable, and future-ready workforce in Maharashtra."
+
+Mission:
+"Bridge the gap between student competencies, academic curricula, and real-time
+industry requirements across Maharashtra's industrial and technology clusters through
+intelligent skill analysis, personalized learning roadmaps, and longitudinal outcome tracking."
+
+Primary Product Flow — Source of Truth:
+HOME 
+  ↓
+CHECK MY SKILL GAP 
+  ↓
+LOGIN + CONSENT 
+  ↓
+QUICK SURVEY (7 Steps)
+  ↓
+SKILL ANALYSIS 
+  ↓
+RECOMMENDED COURSES 
+  ↓
+PERSONALIZED ROADMAP 
+  ↓
+MY TRAINING (3 Tabs: Courses, Follow-ups, Certificates)
+  ↓
+COURSE PROGRESS & COMPLETION 
+  ↓
+SAMPLE CERTIFICATE 
+  ↓
+OUTCOME FOLLOW-UP 
+  ↓
+MY OUTCOME DASHBOARD (/my-dashboard)
+
+Key Goals:
+- Trainee-First Continuous Journey: Guided workflow from skill gap diagnosis to job outcome tracking.
+- Track post-training outcomes: Employment, self-employment, apprenticeships, wage growth, and retention.
+- Provide trainees with instant clarity on skill gaps and personalized upskilling roadmaps.
+- Execute automated/assisted follow-ups at 30, 90, 180 days and 12 months post-training.
+- Empower government administrators with summary-first, evidence-based policy analytics via `/outcome-dashboard`.
+
+--------------------------------------------------------------------------------
+2. PROBLEM STATEMENT & BACKGROUND (SIH 2026 SOURCE OF TRUTH)
+--------------------------------------------------------------------------------
+Why MahaSkill AI was Created:
+1. Incomplete Post-Training Outcome Data:
+   Training portals track enrolment, attendance, assessment, and certification, but reliable data
+   on employment, self-employment, wage growth, retention, and training relevance is missing.
+
+2. Industry-Academia Disconnect:
+   Academic courses often lag behind rapidly evolving tech stack demands (e.g., practical SQL/DAX,
+   Cloud deployment, Python analytics). Students graduate without knowing what skills employers require.
+
+3. Lack of Regional & Demographic Skill Intelligence:
+   Students in Tier-2/Tier-3 districts in Maharashtra lack visibility into salary ranges, hiring
+   patterns, and high-demand skills in major tech hubs like Pune and Mumbai.
+
+--------------------------------------------------------------------------------
+3. TARGET AUDIENCE & USER ROLES
+--------------------------------------------------------------------------------
+MahaSkill AI serves dual user roles:
+
+1. Trainees / Students (Primary User Journey):
+   - Continuous, low-burden workflow:
+     Home → Check Skill Gap → Login & Consent → 7-Step Survey → Skill Gap Analysis →
+     Recommended Courses → Upskilling Roadmap → My Training → Progress & Completion →
+     Sample Certificate → Outcome Follow-up → My Outcome Dashboard (`/my-dashboard`).
+   - Personal outcome dashboard displaying employment signal, TCS placement, +39.1% wage growth,
+     and retention timeline.
+
+2. Government Administrators & Policy Makers (Internal Route `/outcome-dashboard`):
+   - Summary-First analytical dashboard focused on state-wide KPIs, non-placement barriers,
+     6-month retention metrics, wage growth, district benchmarks, and provider performance.
+
+--------------------------------------------------------------------------------
+4. CORE SYSTEM ARCHITECTURE & TECH STACK
+--------------------------------------------------------------------------------
+Technology Stack:
+- Frontend Core: React 19 (JSX) with Vite 8
+- Routing: React Router DOM v7
+- Data Visualization: Recharts 3 & Tailwind metric cards
+- Icons: Lucide React (`lucide-react`)
+- Styling: TailwindCSS v4 with official Maharashtra Government color aesthetic:
+  - Deep Navy Blue (`#062B52`) & Primary Blue (`#0B3B70`)
+  - Accent Gold (`#F2A900`) & Light Background (`#F5F7FA`)
+- State Management: React Context API (`AppContext.jsx`) with LocalStorage persistence:
+  - `mahaSkillCourses`, `mahaSkillSurvey`, `mahaSkillAnalysis`, `mahaSkillOutcome`, `mahaSkillConsent`, `mahaSkillFollowup`.
+- Internationalization (i18n): Dual-language engine (English & Marathi `mr`).
+- Data Credibility Labeling: All data explicitly tagged `"Prototype Dataset • Illustrative Data"`, `"Demo Verification"`, or `"Prototype / Sample Certificate"`.
+
+--------------------------------------------------------------------------------
+5. KEY MODULES & FEATURE BREAKDOWN
+--------------------------------------------------------------------------------
+
+[A] Government Header & Navigation (GovernmentHeader.jsx)
+- Official Maharashtra State emblem branding & notice ticker.
+- Anthem Modal ("Garja Maharashtra Majha") with full lyrics and audio theme.
+- Navigation links for Trainee Mode:
+  Home | My Training | My Outcomes | Skill Intelligence | Roadmap | Industry Requirements | About
+- Internal Route for Government Admins: `/outcome-dashboard`.
+
+[B] Personal Trainee Outcome Dashboard (MyOutcomeDashboard.jsx — `/my-dashboard`)
+- Personalized outcome view for trainee Sahil Bhole (Data Analyst).
+- Metrics: Certified Status, Employed at TCS, Starting Salary ₹13,800 → Current Salary ₹19,200 (+39.1% Growth), 6-Month Retention Passed (✓).
+- Outcome Timeline: Training Completed → Certified → Employed at TCS → 30D Follow-up Done → 90D Due.
+
+[C] Trainee Outcome & Portal Experience (MyTraining.jsx)
+- Structured into 3 clear tabs:
+  1. MY ENROLLED COURSES: Active course list, progress bars, `[+25% Progress]`, `[Complete Course]` buttons, completion modal banner.
+  2. FOLLOW-UP SCHEDULE: 30-Day, 90-Day, 180-Day, and 365-Day longitudinal timeline with interactive submission modal.
+  3. MY CERTIFICATES: Verified sample certificate viewer modal with candidate name (SAHIL BHOLE), course title (ADVANCED SQL), Certificate ID (MSA-2026-8842), Government signature seal, QR placeholder, and explicit tag `"Prototype / Sample Certificate"`.
+
+[D] Diagnostic Survey (Survey.jsx)
+- Structured 7-step diagnostic questionnaire:
+  - Step 1: Education Level
+  - Step 2: Current Course / Specialization
+  - Step 3: Target Role
+  - Step 4: Technical Skills Rating (SQL, Python, Power BI, Git)
+  - Step 5: Projects & Portfolio
+  - Step 6: Past Training Experience
+  - Step 7: Location & Learning Preference
+- Automatically calculates Skill Alignment Score, Career Readiness Score, and High Priority Gaps.
+
+[E] Skill Gap Analysis & Recommended Training (SkillGap.jsx)
+- Outcome Alignment Score (68%), Technical Match (72%), Critical Gap Count (3).
+- Current Skills vs Role Requirements progress comparisons.
+- Recommended Upskilling Interventions section featuring targeted courses with `[Start Training]` actions.
+
+[F] Interactive Learning Roadmap (SkillRoadmap.jsx & roadmaps.js)
+- Sequential flowchart mapping learning phases (Completed ✓, Current Focus →, Not Started ○).
+- Topic checklist modal with topic checkoffs.
+
+[G] Summary-First Admin Outcome Dashboard (OutcomeDashboard.jsx — `/outcome-dashboard`)
+- Summary-first dashboard with collapsed filters, summary KPIs, Key Insight card, single `Explore Analytics ▼` dropdown selector, and AI Outcome Advisor.
+
+--------------------------------------------------------------------------------
+6. DATA BENCHMARKS & SAMPLE RECORDS
+--------------------------------------------------------------------------------
+Statewide Summary KPIs (Prototype Dataset):
+- Total Enrolled Trainees: 25,430
+- Total Certified Trainees: 21,850
+- Total Placed / Employed: 14,620 (66.9% Placement Rate)
+- 6-Month Job Retention Rate: 58.4%
+- Average Starting Wage: ₹13,800/mo -> Average Current Wage: ₹19,200/mo (+39.1% Growth)
+
+District Outcome Metrics:
+- Pune: 6,450 Trainees | 78.0% Placement | 71.5% Retention | ₹22,400 Avg Wage
+- Mumbai Suburban & City: 7,200 Trainees | 75.0% Placement | 68.2% Retention | ₹23,800 Avg Wage
+- Thane: 3,100 Trainees | 70.9% Placement | 64.0% Retention | ₹19,500 Avg Wage
+- Nashik: 2,800 Trainees | 64.0% Placement | 57.5% Retention | ₹16,900 Avg Wage
+- Nagpur: 2,500 Trainees | 61.0% Placement | 54.8% Retention | ₹16,200 Avg Wage
+- Chhatrapati Sambhajinagar: 1,900 Trainees | 57.0% Placement | 51.2% Retention | ₹15,800 Avg Wage
+- Kolhapur: 1,480 Trainees | 58.7% Placement | 53.0% Retention | ₹15,500 Avg Wage
+
+--------------------------------------------------------------------------------
+7. END-TO-END SIH DEMO WORKFLOW (2–3 MINUTE DEMO STORY)
+--------------------------------------------------------------------------------
+1. Trainee Experience:
+   Click "Check My Skill Gap" on Home -> Login (Sahil Bhole) & Consent -> 7-Step Survey -> View Skill Gap & Recommended Training -> Open Roadmap -> Go to My Training -> Track progress & click Complete Course -> View Sample Certificate -> Complete 30-Day Follow-up -> View Personal Outcome Dashboard (`/my-dashboard`).
+
+2. Government Admin Experience (Internal `/outcome-dashboard`):
+   Navigate to internal route `/outcome-dashboard` -> view state summary KPIs & Key Insight card -> expand compact filters -> pick analysis from `Explore Analytics ▼` (e.g. Course Outcomes or Non-Placement Reasons) -> review single view chart & recommended policy intervention.
+
+--------------------------------------------------------------------------------
+8. FUTURE ENHANCEMENTS
+--------------------------------------------------------------------------------
+- Direct API integration with MSSDS state database and college ERP portals.
+- Real-time job portal matching based on trainee skill gap profiles.
+- Blockchain-backed tamper-proof skill certifications and outcome verification records.
+- Voice-enabled Marathi AI career counselor.
+
+================================================================================
+                     END OF MAHASKILL AI DOCUMENTATION
+================================================================================
