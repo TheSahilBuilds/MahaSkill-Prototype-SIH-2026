@@ -52,7 +52,7 @@ export default function SkillGap() {
               Which skills may be affecting my employment outcome?
             </h1>
             <p className="text-xs text-[#52657A]">
-              Longitudinal analysis for <span className="font-bold text-[#062B52]">{userName}</span> ({userEmail}) • Target Role: <span className="font-bold text-[#0B3B70]">{targetRole}</span>
+              Your current skills compared with the skills expected for your target role (<span className="font-bold text-[#0B3B70]">{targetRole}</span>). Candidate: <span className="font-bold text-[#062B52]">{userName}</span>
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export default function SkillGap() {
 
         <div className="inline-flex items-center gap-2 text-[11px] text-slate-500 italic bg-amber-50/60 px-3 py-1 rounded-lg border border-amber-200/60">
           <Info className="w-3.5 h-3.5 text-[#F2A900] shrink-0" />
-          <span>Illustrative Industry Benchmark — Maharashtra State Skill Engine</span>
+          <span>Illustrative Industry Benchmark • Prototype Dataset</span>
         </div>
 
       </div>
@@ -206,6 +206,10 @@ export default function SkillGap() {
             </p>
           </div>
         </div>
+
+        <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-xl text-center text-xs font-bold text-[#062B52]">
+          💡 These gaps help MahaSkill recommend training that can improve your job readiness.
+        </div>
       </div>
 
       {/* RECOMMENDED COURSES SECTION LINKED TO GAPS */}
@@ -213,9 +217,12 @@ export default function SkillGap() {
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-[#F2A900]" />
-            <h3 className="font-extrabold text-base text-[#062B52]">Recommended Upskilling Interventions</h3>
+            <div>
+              <h3 className="font-extrabold text-base text-[#062B52]">Recommended Upskilling Interventions</h3>
+              <p className="text-xs text-slate-500 font-normal">Recommended based on your current skill gaps and target role ({targetRole}).</p>
+            </div>
           </div>
-          <span className="text-[11px] font-extrabold bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded">
+          <span className="text-[11px] font-extrabold bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded shrink-0">
             Targeted for {targetRole}
           </span>
         </div>

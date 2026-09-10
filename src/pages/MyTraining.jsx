@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { useNavigate } from 'react-router-dom';
 import { 
   CheckCircle2, 
   Clock, 
@@ -27,8 +26,6 @@ export default function MyTraining() {
     updateCourseProgress,
     completeCourse
   } = useApp();
-
-  const navigate = useNavigate();
 
   // Tab State: 'courses' | 'followups' | 'certificates'
   const [activeTab, setActiveTab] = useState('courses');
@@ -446,35 +443,40 @@ export default function MyTraining() {
               <Award className="w-10 h-10 text-[#F2A900]" />
             </div>
             
-            <div className="space-y-1">
-              <span className="text-[10px] font-extrabold uppercase text-emerald-700 tracking-wider">CONGRATULATIONS!</span>
-              <h3 className="text-xl font-extrabold text-[#062B52]">Course Completed Successfully</h3>
-              <p className="text-xs text-slate-600">
-                You have completed <strong className="text-[#062B52]">{celebrationCourse.title}</strong>. Your sample certificate is now unlocked!
+            <div className="space-y-2">
+              <span className="text-[10px] font-extrabold uppercase text-emerald-700 tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
+                MILESTONE ACHIEVED
+              </span>
+              <h3 className="text-xl font-extrabold text-[#062B52]">Course Completed</h3>
+              <p className="text-xs font-bold text-[#0B3B70]">
+                Your training journey does not end with certification.
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                MahaSkill follows your progress after training to understand employment, retention, wage growth and training relevance.
               </p>
             </div>
 
-            <div className="pt-4 flex flex-col gap-2">
+            <div className="pt-2 flex flex-col gap-2">
+              <button
+                onClick={() => {
+                  setCelebrationCourse(null);
+                  setActiveTab('followups');
+                }}
+                className="w-full bg-[#062B52] hover:bg-[#0B3B70] text-white py-3 rounded-xl font-extrabold text-xs shadow-md transition flex items-center justify-center gap-2"
+              >
+                <span>Continue to Outcome Follow-up →</span>
+              </button>
+
               <button
                 onClick={() => {
                   setSelectedCertCourse(celebrationCourse);
                   setCelebrationCourse(null);
                   setActiveTab('certificates');
                 }}
-                className="w-full bg-[#062B52] hover:bg-[#0B3B70] text-white py-3 rounded-xl font-extrabold text-xs shadow-md transition flex items-center justify-center gap-2"
+                className="w-full bg-[#F5F7FA] hover:bg-slate-200 border border-slate-300 text-[#062B52] py-2.5 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2"
               >
                 <Award className="w-4 h-4 text-[#F2A900]" />
-                <span>View Sample Certificate</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setCelebrationCourse(null);
-                  navigate('/my-dashboard');
-                }}
-                className="w-full bg-[#F5F7FA] hover:bg-slate-200 border border-slate-300 text-[#062B52] py-2.5 rounded-xl font-bold text-xs transition"
-              >
-                Go to My Outcome Dashboard →
+                <span>View Certificate</span>
               </button>
             </div>
           </div>

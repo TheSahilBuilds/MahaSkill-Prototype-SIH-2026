@@ -23,7 +23,7 @@ export default function MyOutcomeDashboard() {
     <div className="space-y-6 animate-fadeIn pb-12">
       
       {/* 1. HEADER */}
-      <div className="bg-[#032447] text-white rounded-2xl p-6 sm:p-8 shadow-lg relative overflow-hidden">
+      <div className="bg-[#032447] text-white rounded-2xl p-6 sm:p-8 shadow-lg relative overflow-hidden space-y-4">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#F2A900]/10 rounded-full blur-3xl -z-10"></div>
         
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -33,22 +33,34 @@ export default function MyOutcomeDashboard() {
                 TRAINEE OUTCOME SUMMARY
               </span>
               <span className="bg-slate-800 text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded border border-slate-700">
-                Personal Livelihood Dashboard
+                Illustrative Demo Data • Prototype Dataset
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white mt-2">
-              My Training & Career Outcome
+              What Happened After My Training?
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
               Track your post-training employment verification, wage progression, retention milestones, and next upskilling steps.
             </p>
           </div>
 
-          <div className="bg-slate-800/90 border border-slate-700 p-3 rounded-xl shrink-0 text-right">
+          <div className="bg-slate-800/90 border border-slate-700 p-3.5 rounded-xl shrink-0 text-right">
             <div className="text-[10px] font-bold uppercase text-[#F2A900] tracking-wider">Verification Status</div>
             <div className="text-xs font-bold text-emerald-400 mt-0.5">✓ Outcome Verified</div>
-            <div className="text-[10px] text-slate-400 mt-0.5">Demo Verification</div>
+            <div className="text-[10px] text-slate-400 mt-0.5">Illustrative Demo Data</div>
           </div>
+        </div>
+
+        {/* OUTCOME JOURNEY STRIP */}
+        <div className="pt-2 border-t border-slate-700/80 flex flex-wrap items-center gap-1.5 text-xs text-slate-200 font-bold">
+          <span className="text-slate-400 text-[10px] uppercase block w-full sm:w-auto">Outcome Journey:</span>
+          <span className="bg-slate-800 text-white px-2.5 py-1 rounded border border-slate-700">Training Completed</span>
+          <span className="text-[#F2A900]">→</span>
+          <span className="bg-slate-800 text-white px-2.5 py-1 rounded border border-slate-700">Certificate Issued</span>
+          <span className="text-[#F2A900]">→</span>
+          <span className="bg-emerald-950 text-emerald-300 px-2.5 py-1 rounded border border-emerald-800">Employed at TCS</span>
+          <span className="text-[#F2A900]">→</span>
+          <span className="bg-amber-950 text-amber-300 px-2.5 py-1 rounded border border-amber-800">Longitudinal Retention</span>
         </div>
       </div>
 
@@ -241,6 +253,17 @@ export default function MyOutcomeDashboard() {
           </div>
         </div>
 
+      </div>
+
+      {/* 5. SIH DATA PURPOSE STATEMENT */}
+      <div className="bg-blue-50/80 border border-blue-200 p-4 rounded-2xl text-xs text-[#062B52] font-semibold space-y-1">
+        <div className="font-extrabold flex items-center gap-1.5 text-[#062B52]">
+          <ShieldCheck className="w-4 h-4 text-[#0B3B70]" />
+          <span>Why MahaSkill Outcome Data Matters</span>
+        </div>
+        <p className="text-slate-600 leading-relaxed text-[11px]">
+          MahaSkill uses outcome data to identify skill gaps, understand non-placement and attrition, evaluate training relevance, and improve future training.
+        </p>
       </div>
 
     </div>

@@ -126,12 +126,12 @@ export default function Home() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-[#062B52] leading-tight tracking-tight">
-              Measure Skills. Build Skills. <br />
-              <span className="text-[#F2A900]">Track Outcomes.</span>
+              From Skill Development to <br />
+              <span className="text-[#F2A900]">Real Outcomes</span>
             </h1>
 
             <p className="text-[#52657A] text-sm sm:text-base leading-relaxed max-w-xl font-normal">
-              MahaSkill AI helps trainees identify skill gaps, find relevant training, build job-ready skills and track employment outcomes after training.
+              Identify skill gaps, build the right skills, and track what happens after training — from employment and retention to wage progression.
             </p>
 
             <div className="flex flex-wrap gap-3.5 pt-1">
@@ -149,6 +149,19 @@ export default function Home() {
               >
                 <span>Explore Outcomes</span>
               </Link>
+            </div>
+
+            {/* SMALL SUPPORTING JOURNEY FLOW STRIP */}
+            <div className="pt-2 text-[11px] font-bold text-[#062B52] flex flex-wrap items-center gap-1.5 opacity-90">
+              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">Skill Gap</span>
+              <span className="text-slate-400">→</span>
+              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">Training</span>
+              <span className="text-slate-400">→</span>
+              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">Certificate</span>
+              <span className="text-slate-400">→</span>
+              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">Employment</span>
+              <span className="text-slate-400">→</span>
+              <span className="bg-amber-100 text-amber-900 px-2 py-0.5 rounded border border-amber-300">Long-Term Outcomes</span>
             </div>
 
           </div>

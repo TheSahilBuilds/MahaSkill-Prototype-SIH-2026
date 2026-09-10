@@ -107,7 +107,7 @@ export default function SkillRoadmap() {
               Recommended Upskilling Roadmap
             </h1>
             <p className="text-xs text-[#52657A]">
-              Deterministic outcome-driven learning pathway generated for <span className="font-bold text-[#062B52]">{userName}</span> ({userEmail})
+              Your roadmap from current skill level to job readiness for <span className="font-bold text-[#062B52]">{userName}</span> (Target Role: <span className="font-bold text-[#0B3B70]">{targetRole}</span>).
             </p>
           </div>
 
