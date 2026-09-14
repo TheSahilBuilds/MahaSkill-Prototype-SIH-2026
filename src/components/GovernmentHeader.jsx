@@ -9,14 +9,12 @@ import {
   ChevronRight,
   ArrowRight,
   RotateCcw,
-  ShieldCheck,
-  GraduationCap,
-  Building2
+  ShieldCheck
 } from 'lucide-react';
 import RajyageetModal from './RajyageetModal';
 
 export default function GovernmentHeader() {
-  const { language, toggleLanguage, user, resetDemo, t, userRole, setUserRole } = useApp();
+  const { language, toggleLanguage, user, resetDemo, t, userRole } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRajyageetOpen, setIsRajyageetOpen] = useState(false);
   const location = useLocation();
@@ -63,31 +61,6 @@ export default function GovernmentHeader() {
             </span>
           </div>
 
-          {/* CENTER ROLE SWITCHER TOGGLE */}
-          <div className="flex items-center gap-1 bg-slate-800/90 p-0.5 rounded-lg border border-slate-700">
-            <button
-              onClick={() => setUserRole('trainee')}
-              className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-bold transition ${
-                userRole === 'trainee' 
-                  ? 'bg-[#F2A900] text-[#032447] shadow-2xs' 
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              <GraduationCap className="w-3 h-3" />
-              <span>{language === 'mr' ? 'प्रशिक्षणार्थी मोड' : 'Trainee View'}</span>
-            </button>
-            <button
-              onClick={() => setUserRole('admin')}
-              className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-bold transition ${
-                userRole === 'admin' 
-                  ? 'bg-[#F2A900] text-[#032447] shadow-2xs' 
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              <Building2 className="w-3 h-3" />
-              <span>{language === 'mr' ? 'शासकीय विश्लेषण मोड' : 'Government View'}</span>
-            </button>
-          </div>
 
           {/* RIGHT CONTROLS */}
           <div className="flex items-center space-x-3 text-slate-300">
@@ -222,23 +195,6 @@ export default function GovernmentHeader() {
       {/* MOBILE NAVIGATION DRAWER */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white border-t border-[#D9E1EA] px-4 py-4 space-y-3 shadow-lg">
-          <div className="flex items-center justify-between p-2 bg-slate-100 rounded-lg">
-            <span className="text-xs font-bold text-[#032447]">View Mode:</span>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => setUserRole('trainee')}
-                className={`px-2 py-1 rounded text-xs font-bold ${userRole === 'trainee' ? 'bg-[#062B52] text-white' : 'text-slate-600'}`}
-              >
-                Trainee
-              </button>
-              <button
-                onClick={() => setUserRole('admin')}
-                className={`px-2 py-1 rounded text-xs font-bold ${userRole === 'admin' ? 'bg-[#062B52] text-white' : 'text-slate-600'}`}
-              >
-                Govt Admin
-              </button>
-            </div>
-          </div>
 
           <nav className="flex flex-col space-y-2 text-sm font-semibold text-[#172B4D]">
             {navLinks.map((link) => (
