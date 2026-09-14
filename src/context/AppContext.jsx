@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { performSkillGapAnalysis } from '../utils/skillAnalysis';
-import { TRANSLATIONS } from '../data/translations';
+import { TRANSLATIONS, MARATHI_DICTIONARY, MARATHI_DICTIONARY_LOWER } from '../data/translations';
 import { 
   DEFAULT_TRAINEE_RECORD, 
   DEFAULT_OUTCOME_STATE, 
@@ -303,9 +303,42 @@ export const AppProvider = ({ children }) => {
     setLanguage(prev => prev === 'en' ? 'mr' : 'en');
   };
 
-  const t = (key) => {
-    const dict = TRANSLATIONS[language] || TRANSLATIONS.en;
-    return dict[key] || TRANSLATIONS.en[key] || key;
+  const t = (keyOrText) => {
+    if (keyOrText === null || keyOrText === undefined) return keyOrText;
+    if (typeof keyOrText !== 'string') return keyOrText;
+
+    if (language === 'mr') {
+      // 1. Check TRANSLATIONS.mr[keyOrText]
+      if (TRANSLATIONS.mr && TRANSLATIONS.mr[keyOrText]) {
+        return TRANSLATIONS.mr[keyOrText];
+      }
+
+      // 2. Check MARATHI_DICTIONARY exact match
+      if (MARATHI_DICTIONARY && MARATHI_DICTIONARY[keyOrText]) {
+        return MARATHI_DICTIONARY[keyOrText];
+      }
+
+      // 3. Check trimmed string
+      const trimmed = keyOrText.trim();
+      if (MARATHI_DICTIONARY && MARATHI_DICTIONARY[trimmed]) {
+        return MARATHI_DICTIONARY[trimmed];
+      }
+
+      // 4. Case-insensitive lookup
+      const lower = trimmed.toLowerCase();
+      if (MARATHI_DICTIONARY_LOWER && MARATHI_DICTIONARY_LOWER[lower]) {
+        return MARATHI_DICTIONARY_LOWER[lower];
+      }
+
+      // 5. Fallback return keyOrText
+      return keyOrText;
+    }
+
+    // English mode
+    if (TRANSLATIONS.en && TRANSLATIONS.en[keyOrText]) {
+      return TRANSLATIONS.en[keyOrText];
+    }
+    return keyOrText;
   };
 
   return (

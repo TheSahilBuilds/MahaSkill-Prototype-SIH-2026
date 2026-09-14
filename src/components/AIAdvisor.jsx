@@ -5,12 +5,12 @@ import { AI_OUTCOME_KNOWLEDGE_BASE } from '../data/outcomeData';
 
 export default function AIAdvisor() {
   const [isOpen, setIsOpen] = useState(false);
-  const { profile, userRole } = useApp();
+  const { profile, userRole, t } = useApp();
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([
     { 
       sender: 'ai', 
-      text: `Hello ${profile.name || "Sahil"}! I am your MahaSkill AI Outcome Advisor. Ask me anything about trainee outcomes, skill gap diagnostics, district placement rates, or job attrition reasons.` 
+      text: `Hello ${profile.name || "Sahil"}! ${t("Ask me anything about trainee outcomes, skill gap diagnostics, district placement rates, or job attrition reasons.")}` 
     }
   ]);
 
@@ -47,14 +47,14 @@ export default function AIAdvisor() {
   };
 
   const quickPrompts = userRole === 'admin' ? [
-    "Why is placement low for this course?",
-    "Which district needs intervention?",
+    t("Why is placement low for this course?"),
+    t("Which district needs intervention?"),
     "Why are trainees leaving jobs?",
     "What remedial training to introduce?"
   ] : [
-    "What skills should I improve?",
+    t("What skills should I improve?"),
     "Why is my role not matching training?",
-    "Show my recommended roadmap."
+    t("Show my recommended roadmap.")
   ];
 
   return (
@@ -66,7 +66,7 @@ export default function AIAdvisor() {
           className="fixed bottom-6 right-6 z-50 bg-[#062B52] hover:bg-[#0B3B70] text-white px-4 py-3 rounded-full shadow-xl border-2 border-[#F2A900] flex items-center gap-2 transition hover:scale-105"
         >
           <Bot className="w-5 h-5 text-[#F2A900]" />
-          <span className="font-bold text-xs tracking-wide pr-1">AI Outcome Advisor</span>
+          <span className="font-bold text-xs tracking-wide pr-1">{t("AI Outcome Advisor")}</span>
         </button>
       )}
 

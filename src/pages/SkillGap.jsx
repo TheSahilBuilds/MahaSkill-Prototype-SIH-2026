@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 
 export default function SkillGap() {
-  const { user, analysisResult, outcomeState } = useApp();
+  const { user, analysisResult, outcomeState, t } = useApp();
   const navigate = useNavigate();
 
   const userName = user?.name || "Sahil Bhole";
@@ -46,10 +46,10 @@ export default function SkillGap() {
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-[#062B52] bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200 uppercase tracking-wider">
               <Target className="w-3.5 h-3.5 text-[#0B3B70]" />
-              <span>Skill Intelligence & Employment Risk Diagnostic</span>
+              <span>{t("Skill Intelligence & Employment Risk Diagnostic")}</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[#062B52]">
-              Which skills may be affecting my employment outcome?
+              {t("Which skills may be affecting my employment outcome?")}
             </h1>
             <p className="text-xs text-[#52657A]">
               Your current skills compared with the skills expected for your target role (<span className="font-bold text-[#0B3B70]">{targetRole}</span>). Candidate: <span className="font-bold text-[#062B52]">{userName}</span>
@@ -61,33 +61,33 @@ export default function SkillGap() {
             className="bg-[#F5F7FA] hover:bg-slate-200 border border-slate-300 text-[#062B52] px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shrink-0"
           >
             <SlidersHorizontal className="w-3.5 h-3.5" />
-            <span>Update Skill Ratings</span>
+            <span>{t("Update Skill Ratings")}</span>
           </button>
         </div>
 
         {/* DEMO CANDIDATE CARD & BENCHMARK NOTICE */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-[#F5F7FA] p-4 rounded-xl border border-slate-200">
           <div>
-            <span className="text-slate-400 font-semibold text-[10px] uppercase block">Candidate Name</span>
+            <span className="text-slate-400 font-semibold text-[10px] uppercase block">{t("Candidate Name")}</span>
             <span className="font-extrabold text-[#062B52] text-sm">{userName}</span>
           </div>
           <div>
-            <span className="text-slate-400 font-semibold text-[10px] uppercase block">Employment Status</span>
+            <span className="text-slate-400 font-semibold text-[10px] uppercase block">{t("Employment Status")}</span>
             <span className="font-bold text-emerald-700 font-mono text-[11px] block">{outcomeState.status}</span>
           </div>
           <div>
-            <span className="text-slate-400 font-semibold text-[10px] uppercase block">Current Wage Tier</span>
+            <span className="text-slate-400 font-semibold text-[10px] uppercase block">{t("Current Wage Tier")}</span>
             <span className="font-extrabold text-[#0B3B70]">₹{outcomeState.currentSalary?.toLocaleString('en-IN')}/mo</span>
           </div>
           <div>
-            <span className="text-slate-400 font-semibold text-[10px] uppercase block">Target Location</span>
+            <span className="text-slate-400 font-semibold text-[10px] uppercase block">{t("Target Location")}</span>
             <span className="font-bold text-slate-700">Pune, Maharashtra</span>
           </div>
         </div>
 
         <div className="inline-flex items-center gap-2 text-[11px] text-slate-500 italic bg-amber-50/60 px-3 py-1 rounded-lg border border-amber-200/60">
           <Info className="w-3.5 h-3.5 text-[#F2A900] shrink-0" />
-          <span>Illustrative Industry Benchmark • Prototype Dataset</span>
+          <span>{t("Illustrative Industry Benchmark • Prototype Dataset")}</span>
         </div>
 
       </div>

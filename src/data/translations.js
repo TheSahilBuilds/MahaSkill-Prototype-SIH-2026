@@ -1,3 +1,5 @@
+import { MARATHI_TRANSLATIONS } from './mockData';
+
 // Comprehensive Marathi & English Translations Dictionary for MahaSkill
 export const TRANSLATIONS = {
   en: {
@@ -143,3 +145,200 @@ export const TRANSLATIONS = {
     demoVersion: "प्रोटोटाइप / प्रात्यक्षिक आवृत्ती"
   }
 };
+
+// Comprehensive Direct Text String Translation Dictionary for English -> Marathi
+export const MARATHI_DICTIONARY = {
+  ...MARATHI_TRANSLATIONS,
+  
+  // Navigation & Headers
+  "Home": "मुख्य पृष्ठ",
+  "Dashboard": "डॅशबोर्ड",
+  "My Skills": "माझी कौशल्ये",
+  "Skill Gap": "कौशल्य तफावत",
+  "Roadmap": "करिअर रोडमॅप",
+  "Skill Roadmap": "कौशल्य रोडमॅप",
+  "Industry Requirements": "उद्योग गरजा",
+  "Career Opportunities": "नोकरीच्या संधी",
+  "Resume Analyzer": "रेझ्युमे विश्लेषण",
+  "Mock Interview": "मॉक मुलाखत",
+  "Aptitude": "अ‍ॅप्टिट्यूड चाचणी",
+  "Coding Practice": "कोडिंग सराव",
+  "Placement Report": "प्लेसमेंट अहवाल",
+  "State Analytics": "राज्य विश्लेषण",
+  "History": "इतिहास",
+  "Profile": "प्रोफाइल",
+  "About": "आमच्याबद्दल",
+  "About Us": "आमच्याबद्दल",
+  "Contact Us": "संपर्क करा",
+  "My Training": "माझे प्रशिक्षण",
+  "My Outcomes": "माझे निकाल",
+  "Outcome Dashboard": "निकाल डॅशबोर्ड",
+  "Skill Intelligence": "कौशल्य बुद्धिमत्ता",
+  "Programmes": "कार्यक्रम",
+
+  // Top Bar & Buttons
+  "Government of Maharashtra": "महाराष्ट्र शासन",
+  "Trainee View": "प्रशिक्षणार्थी मोड",
+  "Government View": "शासकीय विश्लेषण मोड",
+  "Reset Demo": "डेमो रीसेट करा",
+  "Rajyageet": "राज्यगीत",
+  "Login / Register": "लॉगिन / नोंदणी",
+  "Update Outcome": "माझे निकाल पहा",
+  "Update My Outcome": "माझे निकाल अपडेट करा",
+
+  // Hero & Home Section
+  "SIH 2026 Longitudinal Outcome Tracking": "SIH 2026 कौशल्याचे निकाल व प्रभाव मापन",
+  "From Skill Development to": "कौशल्य विकासापासून ते",
+  "From Skill Development to Real Outcomes": "कौशल्य विकासापासून ते प्रत्यक्ष निकालांपर्यंत",
+  "Real Outcomes": "प्रत्यक्ष निकाल",
+  "Identify skill gaps, build the right skills, and track what happens after training — from employment and retention to wage progression.": "कौशल्य तफावत ओळखा, योग्य कौशल्ये आत्मसात करा आणि प्रशिषणानंतर रोजगारापासून वेतनवाढीपर्यंत प्रगतीचा मागोवा घ्या.",
+  "Check My Skill Gap": "माझी कौशल्य तफावत तपासा",
+  "Explore Outcomes": "निकाल शोधा",
+  "Training": "प्रशिक्षण",
+  "Certificate": "प्रमाणपत्र",
+  "Employment": "रोजगार",
+  "Long-Term Outcomes": "दीर्घकालीन निकाल",
+  "Skilling Impact Metrics": "कौशल्य प्रभाव मापदंड",
+  "LIVE": "थेट",
+  "Trainees Tracked": "मागोवा घेतलेले प्रशिक्षणार्थी",
+  "Placed Trainees": "रोजगार मिळालेले प्रशिक्षणार्थी",
+  "6-Mo Retention": "६-महिन्यांचे टिकून राहण्याचे प्रमाण",
+  "Avg Wage Growth": "सरासरी वेतन वाढ",
+  "Outcome & Impact Workflow": "निकाल व प्रभाव कार्यप्रवाह",
+  "Training → Outcome → Follow-up → Insight → Action": "प्रशिक्षण → निकाल → पाठपुरावा → माहिती → कृती",
+  "Training Record": "प्रशिक्षण नोंद",
+  "Consent-based trainee record created with course, provider & certification status.": "कोर्स, संस्था व प्रमाणपत्रासह संमतीवर आधारित नोंद तयार केली जाते.",
+  "Outcome Tracking": "निकाल मापन",
+  "Capture employed, self-employed, apprenticeship, or job-seeking status.": "रोजगार, स्वयंरोजगार, अप्रेंटिसशिप किंवा नोकरी शोध स्थितीची नोंद घ्या.",
+  "Follow-up System": "पाठपुरावा प्रणाली",
+  "Automated 30, 90, 180-day and 12-month follow-ups to measure wage & retention.": "वेतन आणि टिकून राहण्याच्या प्रमाणासाठी ३०, ९०, १८० दिवस व १२ महिन्यांचा स्वयंचलित पाठपुरावा.",
+  "Skill Insight": "कौशल्य माहिती",
+  "Identify skill gaps and reasons for non-placement or employment attrition.": "कौशल्य तफावत आणि बिगर-प्लेसमेंट किंवा नोकरी सोडण्याची कारणे ओळखा.",
+  "Personalized Action": "वैयक्तिक कृती",
+  "Recommended upskilling roadmap for trainees and intervention for government.": "प्रशिक्षणार्थींसाठी शिफारस केलेला रोडमॅप आणि शासनासाठी आवश्यक हस्तक्षेप.",
+  // Data Cards & District Leaderboard
+  "Top Trainee Skill Gaps": "सर्वाधिक प्रशिक्षणार्थी कौशल्य तफावत",
+  "View Skill Intelligence": "कौशल्य बुद्धिमत्ता पहा",
+  "Source: MahaSkill Deterministic Analysis Engine": "स्रोत: महास्किल विश्लेषक इंजिन",
+  "Trainee Outcome Alignment": "प्रशिक्षणार्थी निकाल जुळवणी",
+  "Admin Analytics": "शासकीय विश्लेषण",
+  "Employment Placement Rate": "रोजगार प्लेसमेंट दर",
+  "Placed": "रोजगार मिळालेले",
+  "Self-Employed": "स्वयंरोजगार",
+  "Seeking": "नोकरीच्या शोधात",
+  "Longitudinal skilling outcome verification active.": "दीर्घकालीन कौशल्य निकाल पडताळणी सक्रिय.",
+  "District Placement Leaderboard": "जिल्हानिहाय प्लेसमेंट तक्ता",
+  "Full District Map": "संपूर्ण जिल्हा नकाशा",
+  "Ready to measure training outcomes & upskill?": "तुमचे प्रशिक्षण निकाल आणि प्रगती अपडेट करण्यास तयार आहात का?",
+  "Update your training outcome status or view administrative analytics.": "तुमची स्थिती अपडेट करा किंवा शासकीय विश्लेषण पहा.",
+  "Update My Outcome": "माझे निकाल अपडेट करा",
+
+  // Skill Gap & Intelligence
+  "Skill Intelligence & Employment Risk Diagnostic": "कौशल्य बुद्धिमत्ता व रोजगार जोखीम निदान",
+  "Which skills may be affecting my employment outcome?": "कोणती कौशल्ये माझ्या रोजगाराच्या निकालावर परिणाम करत आहेत?",
+  "Update Skill Ratings": "कौशल्य रेटिंग अपडेट करा",
+  "Employment Status": "रोजगार स्थिती",
+  "Current Wage Tier": "सध्याचे वेतन",
+  "Target Location": "लक्ष्य ठिकाण",
+  "Illustrative Industry Benchmark • Prototype Dataset": "प्रात्यक्षिक उद्योग मानके • प्रोटोटाइप डेटा",
+  "OUTCOME ALIGNMENT SCORE": "उद्योग सुसंगतता गुण",
+  "HIGH PRIORITY SKILL GAPS": "उच्च प्राधान्य कौशल्य तफावत",
+  "EMPLOYMENT RISK": "रोजगार जोखीम",
+  "Low Risk": "कमी जोखीम",
+  "Medium Risk": "मध्यम जोखीम",
+  "High Risk": "उच्च जोखीम",
+  "High Priority": "उच्च प्राधान्य",
+  "Medium Priority": "मध्यम प्राधान्य",
+  "Low Priority": "कमी प्राधान्य",
+  "Recommended Remedial Upskilling Pathway": "शिफारस केलेला सुधारणात्मक शिकण्याचा मार्ग",
+  "View Personalized Roadmap": "वैयक्तिक रोडमॅप पहा",
+  "Enrol in Recommended Course": "शिफारस केलेल्या कोर्समध्ये प्रवेश घ्या",
+
+  // Skill Roadmap Page
+  "Personalized Skill & Employment Roadmap": "वैयक्तिक कौशल्य व रोजगार रोडमॅप",
+  "Step-by-step upskilling pathway designed to eliminate your specific employment risk gaps.": "तुमची कौशल्य तफावत दूर करण्यासाठी टप्प्याटप्प्याने तयार केलेला मार्ग.",
+  "Retake Assessment": "मूल्यांकन पुन्हा द्या",
+  "Target Role Alignment": "लक्ष्य भूमिका सुसंगतता",
+  "Estimated Completion": "अंदाजे पूर्णता वेळ",
+  "Weeks": "आठवडे",
+  "Current Phase": "सध्याचा टप्पा",
+  "Completed": "पूर्ण झालेले",
+  "Current Focus": "सध्याचे लक्ष",
+  "Not Started": "सुरू केलेले नाही",
+  "Mark Phase Completed": "टप्पा पूर्ण म्हणून चिन्हांकित करा",
+  "Phase Completed": "टप्पा पूर्ण झाला",
+  "Recommended Training Centre": "शिफारस केलेले प्रशिक्षण केंद्र",
+  "Explore Opportunities": "संधी शोधा",
+
+  // Training & Outcomes Page
+  "My Training & Skilling Outcomes": "माझे प्रशिक्षण व निकाल",
+  "Longitudinal tracking of your training completion, employment signals, and wage growth.": "तुमच्या प्रशिक्षण पूर्णतेचा आणि वेतनवाढीचा दीर्घकालीन मागोवा.",
+  "Enrolled Courses": "प्रवेश घेतलेले कोर्स",
+  "Follow-up Timeline": "पाठपुरावा वेळरेषा",
+  "Certificates & Verify": "प्रमाणपत्रे व पडताळणी",
+  "Update Outcome Status": "निकाल स्थिती अपडेट करा",
+  "Verify Certificate": "प्रमाणपत्र पडताळणी",
+  "Course Title": "कोर्सचे नाव",
+  "Progress": "प्रगती",
+  "Status": "स्थिती",
+  "Action": "कृती",
+  "In Progress": "प्रगतीपथावर",
+  "Mark Completed": "पूर्ण म्हणून नोंदवा",
+  "View Certificate": "प्रमाणपत्र पहा",
+  "Day Follow-up": "दिवसांचा पाठपुरावा",
+  "Month Follow-up": "महिन्यांचा पाठपुरावा",
+  "Pending": "प्रलंबित",
+  "Submit Response": "प्रतिसाद सादर करा",
+
+  // Outcome Dashboard (Admin)
+  "Maharashtra State Skilling Outcome Dashboard": "महाराष्ट्र राज्य कौशल्य निकाल डॅशबोर्ड",
+  "Longitudinal outcome evaluation across 36 districts, training providers, and economic sectors.": "३६ जिल्हे, प्रशिक्षण संस्था आणि क्षेत्रांमधील निकालांचे व्यापक विश्लेषण.",
+  "Filter Analytics": "विश्लेषण फिल्टर",
+  "District": "जिल्हा",
+  "All Districts": "सर्व जिल्हे",
+  "Training Provider": "प्रशिक्षण संस्था",
+  "Sector": "क्षेत्र",
+  "Year": "वर्ष",
+  "Total Trainees Tracked": "एकूण मागोवा घेतलेले प्रशिक्षणार्थी",
+  "Placement Rate": "प्लेसमेंट दर",
+  "6-Month Job Retention": "६-महिन्यांचे टिकून राहणे",
+  "Avg Monthly Wage": "सरासरी मासिक वेतन",
+  "Wage Growth %": "वेतन वाढ %",
+  "Job Relevancy Rate": "नोकरी सुसंगतता दर",
+  "Non-Placement Reason Analysis": "बिगर-प्लेसमेंट कारणांचे विश्लेषण",
+  "Employment Attrition Reasons": "नोकरी सोडण्याची कारणे",
+
+  // Common UI Elements
+  "Back": "मागे",
+  "Next": "पुढील",
+  "Submit": "सादर करा",
+  "Cancel": "रद्द करा",
+  "Save": "तन जतन करा",
+  "Search": "शोधा",
+  "Close": "बंद करा",
+  "Download": "डाउनलोड करा",
+  "Print": "प्रिंट करा",
+  "Share": "शेअर करा",
+  "Details": "तपशील",
+  "Overview": "आढावा",
+  "Summary": "सारांश",
+  "Filter": "फिल्टर",
+  "All": "सर्व",
+  "Yes": "होय",
+  "No": "नाही",
+
+  // AI Advisor
+  "AI Outcome Advisor": "एआय निकाल सल्लागार",
+  "Ask me anything about trainee outcomes, skill gap diagnostics, district placement rates, or job attrition reasons.": "प्रशिक्षणार्थी निकाल, कौशल्य तफावत, जिल्हा प्लेसमेंट दर किंवा नोकरी सोडण्याच्या कारणांबद्दल काहीही विचारा.",
+  "What skills should I improve?": "मी कोणती कौशल्ये सुधारली पाहिजेत?",
+  "Show my recommended roadmap.": "माझा शिफारस केलेला रोडमॅप दाखवा.",
+  "Why is placement low for this course?": "या कोर्ससाठी प्लेसमेंट कमी का आहे?",
+  "Which district needs intervention?": "कोणत्या जिल्ह्याला हस्तक्षेपाची गरज आहे?"
+};
+
+// Case-insensitive lookup map for MARATHI_DICTIONARY
+export const MARATHI_DICTIONARY_LOWER = Object.keys(MARATHI_DICTIONARY).reduce((acc, key) => {
+  acc[key.toLowerCase()] = MARATHI_DICTIONARY[key];
+  return acc;
+}, {});
+

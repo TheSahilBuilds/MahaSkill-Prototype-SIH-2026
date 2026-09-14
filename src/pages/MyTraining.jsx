@@ -24,7 +24,8 @@ export default function MyTraining() {
     updateConsent,
     enrolledCourses,
     updateCourseProgress,
-    completeCourse
+    completeCourse,
+    t
   } = useApp();
 
   // Tab State: 'courses' | 'followups' | 'certificates'
@@ -141,7 +142,7 @@ export default function MyTraining() {
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[#062B52] mt-1">
-              My Training & Certification Journey
+              {t("My Training & Skilling Outcomes")}
             </h1>
             <p className="text-xs text-slate-500 mt-1">
               Trainee: <span className="font-bold text-[#062B52]">{user?.name || "Sahil Bhole"}</span> • Course Track: <span className="font-bold text-[#0B3B70]">{traineeRecord.course}</span> ({traineeRecord.district})
@@ -154,7 +155,7 @@ export default function MyTraining() {
               className="bg-[#062B52] hover:bg-[#0B3B70] text-white px-5 py-2.5 rounded-xl font-extrabold text-xs shadow-md transition flex items-center gap-2"
             >
               <Edit3 className="w-4 h-4 text-[#F2A900]" />
-              <span>Update Employment Outcome</span>
+              <span>{t("Update Outcome Status")}</span>
             </button>
           </div>
         </div>
@@ -170,7 +171,7 @@ export default function MyTraining() {
             }`}
           >
             <BookOpen className="w-4 h-4" />
-            <span>MY ENROLLED COURSES ({enrolledCourses.length})</span>
+            <span>{t("Enrolled Courses")} ({enrolledCourses.length})</span>
           </button>
 
           <button

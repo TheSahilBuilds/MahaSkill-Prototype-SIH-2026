@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 export default function SkillRoadmap() {
-  const { user, analysisResult, outcomeState } = useApp();
+  const { user, analysisResult, outcomeState, t } = useApp();
   const navigate = useNavigate();
   
   const userName = user?.name || "Sahil Bhole";
@@ -101,10 +101,10 @@ export default function SkillRoadmap() {
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#062B52] bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200 uppercase tracking-wider">
               <Compass className="w-3.5 h-3.5 text-[#0B3B70]" />
-              <span>Intervention & Learning Pathway</span>
+              <span>{t("Intervention & Learning Pathway")}</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[#062B52]">
-              Recommended Upskilling Roadmap
+              {t("Recommended Upskilling Roadmap")}
             </h1>
             <p className="text-xs text-[#52657A]">
               Your roadmap from current skill level to job readiness for <span className="font-bold text-[#062B52]">{userName}</span> (Target Role: <span className="font-bold text-[#0B3B70]">{targetRole}</span>).
@@ -117,7 +117,7 @@ export default function SkillRoadmap() {
               className="bg-[#F5F7FA] hover:bg-slate-200 border border-slate-300 text-[#062B52] px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5"
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
-              <span>Skill Gaps</span>
+              <span>{t("Skill Gaps")}</span>
             </button>
           </div>
         </div>

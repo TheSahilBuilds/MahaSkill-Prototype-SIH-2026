@@ -121,17 +121,17 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 bg-[#062B52]/10 border border-[#062B52]/20 px-3 py-1 rounded-full">
               <ShieldCheck className="w-4 h-4 text-[#062B52]" />
               <span className="text-xs font-bold text-[#062B52]">
-                {language === 'mr' ? 'SIH 2026 कौशल्याचे निकाल व प्रभाव मापन' : 'SIH 2026 Longitudinal Outcome Tracking'}
+                {t('SIH 2026 Longitudinal Outcome Tracking')}
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-[#062B52] leading-tight tracking-tight">
-              From Skill Development to <br />
-              <span className="text-[#F2A900]">Real Outcomes</span>
+              {t("From Skill Development to")} <br />
+              <span className="text-[#F2A900]">{t("Real Outcomes")}</span>
             </h1>
 
             <p className="text-[#52657A] text-sm sm:text-base leading-relaxed max-w-xl font-normal">
-              Identify skill gaps, build the right skills, and track what happens after training — from employment and retention to wage progression.
+              {t("Identify skill gaps, build the right skills, and track what happens after training — from employment and retention to wage progression.")}
             </p>
 
             <div className="flex flex-wrap gap-3.5 pt-1">
@@ -139,7 +139,7 @@ export default function Home() {
                 to="/login"
                 className="bg-[#062B52] hover:bg-[#0B3B70] text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-md flex items-center gap-2 hover:scale-[1.02]"
               >
-                <span>Check My Skill Gap</span>
+                <span>{t("Check My Skill Gap")}</span>
                 <ArrowRight className="w-4 h-4 text-[#F2A900]" />
               </Link>
               
@@ -147,21 +147,21 @@ export default function Home() {
                 to="/my-dashboard"
                 className="bg-white/90 backdrop-blur-xs hover:bg-slate-50 text-[#172B4D] border border-[#D9E1EA] px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-2xs flex items-center gap-2"
               >
-                <span>Explore Outcomes</span>
+                <span>{t("Explore Outcomes")}</span>
               </Link>
             </div>
 
             {/* SMALL SUPPORTING JOURNEY FLOW STRIP */}
             <div className="pt-2 text-[11px] font-bold text-[#062B52] flex flex-wrap items-center gap-1.5 opacity-90">
-              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">Skill Gap</span>
+              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">{t("Skill Gap")}</span>
               <span className="text-slate-400">→</span>
-              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">Training</span>
+              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">{t("Training")}</span>
               <span className="text-slate-400">→</span>
-              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">Certificate</span>
+              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">{t("Certificate")}</span>
               <span className="text-slate-400">→</span>
-              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">Employment</span>
+              <span className="bg-blue-50 text-[#062B52] px-2 py-0.5 rounded border border-blue-200">{t("Employment")}</span>
               <span className="text-slate-400">→</span>
-              <span className="bg-amber-100 text-amber-900 px-2 py-0.5 rounded border border-amber-300">Long-Term Outcomes</span>
+              <span className="bg-amber-100 text-amber-900 px-2 py-0.5 rounded border border-amber-300">{t("Long-Term Outcomes")}</span>
             </div>
 
           </div>
@@ -171,8 +171,8 @@ export default function Home() {
             <div className="bg-white/90 backdrop-blur-md p-4 rounded-xl border border-slate-200/80 shadow-md space-y-3 max-w-xs ml-auto">
               
               <h3 className="font-bold text-xs sm:text-sm text-[#062B52] border-b border-slate-200/80 pb-1.5 flex items-center justify-between">
-                <span>Skilling Impact Metrics</span>
-                <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-extrabold">LIVE</span>
+                <span>{t("Skilling Impact Metrics")}</span>
+                <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-extrabold">{t("LIVE")}</span>
               </h3>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
@@ -182,7 +182,7 @@ export default function Home() {
                     <Users className="w-3.5 h-3.5 text-[#0B3B70]" />
                     <span className="text-base font-extrabold text-[#062B52]">25.4K</span>
                   </div>
-                  <div className="text-[10px] font-semibold text-slate-500">Trainees Tracked</div>
+                  <div className="text-[10px] font-semibold text-slate-500">{t("Trainees Tracked")}</div>
                 </div>
 
                 <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-0.5">
@@ -190,7 +190,7 @@ export default function Home() {
                     <Briefcase className="w-3.5 h-3.5 text-emerald-600" />
                     <span className="text-base font-extrabold text-emerald-700">66.9%</span>
                   </div>
-                  <div className="text-[10px] font-semibold text-slate-500">Placed Trainees</div>
+                  <div className="text-[10px] font-semibold text-slate-500">{t("Placed Trainees")}</div>
                 </div>
 
                 <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-0.5">
@@ -198,7 +198,7 @@ export default function Home() {
                     <CheckCircle2 className="w-3.5 h-3.5 text-purple-600" />
                     <span className="text-base font-extrabold text-purple-700">58.4%</span>
                   </div>
-                  <div className="text-[10px] font-semibold text-slate-500">6-Mo Retention</div>
+                  <div className="text-[10px] font-semibold text-slate-500">{t("6-Mo Retention")}</div>
                 </div>
 
                 <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-0.5">
@@ -206,7 +206,7 @@ export default function Home() {
                     <TrendingUp className="w-3.5 h-3.5 text-[#062B52]" />
                     <span className="text-base font-extrabold text-[#062B52]">+39%</span>
                   </div>
-                  <div className="text-[10px] font-semibold text-slate-500">Avg Wage Growth</div>
+                  <div className="text-[10px] font-semibold text-slate-500">{t("Avg Wage Growth")}</div>
                 </div>
 
               </div>
@@ -221,10 +221,10 @@ export default function Home() {
       <section className="space-y-6 text-center">
         <div>
           <div className="inline-block text-xs font-bold text-[#0B3B70] uppercase tracking-wider mb-1">
-            — Outcome & Impact Workflow —
+            — {t("Outcome & Impact Workflow")} —
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#062B52]">
-            Training → Outcome → Follow-up → Insight → Action
+            {t("Training → Outcome → Follow-up → Insight → Action")}
           </h2>
         </div>
 
@@ -232,32 +232,32 @@ export default function Home() {
           {[
             {
               step: "01",
-              title: "Training Record",
-              desc: "Consent-based trainee record created with course, provider & certification status.",
+              title: t("Training Record"),
+              desc: t("Consent-based trainee record created with course, provider & certification status."),
               path: "/my-training"
             },
             {
               step: "02",
-              title: "Outcome Tracking",
-              desc: "Capture employed, self-employed, apprenticeship, or job-seeking status.",
+              title: t("Outcome Tracking"),
+              desc: t("Capture employed, self-employed, apprenticeship, or job-seeking status."),
               path: "/my-training"
             },
             {
               step: "03",
-              title: "Follow-up System",
-              desc: "Automated 30, 90, 180-day and 12-month follow-ups to measure wage & retention.",
+              title: t("Follow-up System"),
+              desc: t("Automated 30, 90, 180-day and 12-month follow-ups to measure wage & retention."),
               path: "/my-training"
             },
             {
               step: "04",
-              title: "Skill Insight",
-              desc: "Identify skill gaps and reasons for non-placement or employment attrition.",
+              title: t("Skill Insight"),
+              desc: t("Identify skill gaps and reasons for non-placement or employment attrition."),
               path: "/skill-gap"
             },
             {
               step: "05",
-              title: "Personalized Action",
-              desc: "Recommended upskilling roadmap for trainees and intervention for government.",
+              title: t("Personalized Action"),
+              desc: t("Recommended upskilling roadmap for trainees and intervention for government."),
               path: "/roadmap"
             }
           ].map((card) => (
@@ -288,19 +288,19 @@ export default function Home() {
         {/* CARD 1: Top In-Demand Skills */}
         <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-[#D9E1EA] shadow-2xs space-y-4">
           <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h3 className="font-bold text-sm text-[#062B52]">Top Trainee Skill Gaps</h3>
+            <h3 className="font-bold text-sm text-[#062B52]">{t("Top Trainee Skill Gaps")}</h3>
             <Link to="/skill-gap" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">
-              View Skill Intelligence
+              {t("View Skill Intelligence")}
             </Link>
           </div>
 
           <div className="space-y-3.5">
             {[
-              { name: "SQL & Query Optimization", val: 82, gap: "High Priority" },
-              { name: "Power BI & DAX Calculations", val: 76, gap: "High Priority" },
-              { name: "Python Data Structures", val: 68, gap: "Medium Priority" },
-              { name: "Git Collaborative Workflow", val: 61, gap: "Medium Priority" },
-              { name: "Cloud Deployment (AWS/Docker)", val: 54, gap: "High Priority" }
+              { name: t("SQL & Query Optimization"), val: 82, gap: t("High Priority") },
+              { name: t("Power BI & DAX Calculations"), val: 76, gap: t("High Priority") },
+              { name: t("Python Data Structures"), val: 68, gap: t("Medium Priority") },
+              { name: t("Git Collaborative Workflow"), val: 61, gap: t("Medium Priority") },
+              { name: t("Cloud Deployment (AWS/Docker)"), val: 54, gap: t("High Priority") }
             ].map(skill => (
               <div key={skill.name} className="space-y-1">
                 <div className="flex justify-between text-xs font-semibold text-[#172B4D]">
@@ -315,16 +315,16 @@ export default function Home() {
           </div>
 
           <div className="pt-2 text-[10px] text-slate-400 font-mono">
-            Source: MahaSkill Deterministic Analysis Engine
+            {t("Source: MahaSkill Deterministic Analysis Engine")}
           </div>
         </div>
 
         {/* CARD 2: Skill Gap Overview (Donut Chart) */}
         <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-[#D9E1EA] shadow-2xs space-y-4 flex flex-col justify-between">
           <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h3 className="font-bold text-sm text-[#062B52]">Trainee Outcome Alignment</h3>
+            <h3 className="font-bold text-sm text-[#062B52]">{t("Trainee Outcome Alignment")}</h3>
             <Link to="/outcome-dashboard" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">
-              Admin Analytics
+              {t("Admin Analytics")}
             </Link>
           </div>
 
@@ -350,7 +350,7 @@ export default function Home() {
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
               <span className="text-2xl font-extrabold text-[#062B52]">66.9%</span>
               <span className="text-[10px] font-medium text-[#52657A]">
-                Employment Placement Rate
+                {t("Employment Placement Rate")}
               </span>
             </div>
           </div>
@@ -359,50 +359,50 @@ export default function Home() {
           <div className="flex justify-around text-xs font-semibold pt-1 border-t border-slate-100">
             <span className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 rounded-full bg-[#16A36A]"></span>
-              <span className="text-slate-700">Placed <strong>66.9%</strong></span>
+              <span className="text-slate-700">{t("Placed")} <strong>66.9%</strong></span>
             </span>
             <span className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 rounded-full bg-[#F2A900]"></span>
-              <span className="text-slate-700">Self-Employed <strong>9.1%</strong></span>
+              <span className="text-slate-700">{t("Self-Employed")} <strong>9.1%</strong></span>
             </span>
             <span className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 rounded-full bg-[#D92D20]"></span>
-              <span className="text-slate-700">Seeking <strong>24%</strong></span>
+              <span className="text-slate-700">{t("Seeking")} <strong>24%</strong></span>
             </span>
           </div>
 
           <div className="text-[11px] text-[#52657A] italic text-center">
-            Longitudinal skilling outcome verification active.
+            {t("Longitudinal skilling outcome verification active.")}
           </div>
         </div>
 
         {/* CARD 3: Maharashtra District Performance */}
         <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-[#D9E1EA] shadow-2xs space-y-4">
           <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h3 className="font-bold text-sm text-[#062B52]">District Placement Leaderboard</h3>
-            <Link to="/outcome-dashboard" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">Full District Map</Link>
+            <h3 className="font-bold text-sm text-[#062B52]">{t("District Placement Leaderboard")}</h3>
+            <Link to="/outcome-dashboard" className="text-[11px] font-semibold text-[#0B3B70] hover:underline">{t("Full District Map")}</Link>
           </div>
 
           <div className="space-y-2 text-xs">
             <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
               <span className="font-bold text-[#062B52]">Pune</span>
-              <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">78% Placed (71.5% Retention)</span>
+              <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">78% {t("Placed")} (71.5% Retention)</span>
             </div>
             <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
               <span className="font-bold text-[#062B52]">Mumbai City & Suburbs</span>
-              <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">75% Placed (68.2% Retention)</span>
+              <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">75% {t("Placed")} (68.2% Retention)</span>
             </div>
             <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
               <span className="font-bold text-[#062B52]">Thane</span>
-              <span className="text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded">70.9% Placed (64.0% Retention)</span>
+              <span className="text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded">70.9% {t("Placed")} (64.0% Retention)</span>
             </div>
             <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
               <span className="font-bold text-[#062B52]">Nashik</span>
-              <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded">64% Placed (57.5% Retention)</span>
+              <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded">64% {t("Placed")} (57.5% Retention)</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="font-bold text-[#062B52]">Nagpur</span>
-              <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded">61% Placed (54.8% Retention)</span>
+              <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded">61% {t("Placed")} (54.8% Retention)</span>
             </div>
           </div>
         </div>
@@ -416,8 +416,8 @@ export default function Home() {
             <GraduationCap className="w-6 h-6 text-[#F2A900]" />
           </div>
           <div>
-            <h3 className="font-bold text-base sm:text-lg">Ready to measure training outcomes & upskill?</h3>
-            <p className="text-slate-300 text-xs sm:text-sm">Update your training outcome status or view administrative analytics.</p>
+            <h3 className="font-bold text-base sm:text-lg">{t("Ready to measure training outcomes & upskill?")}</h3>
+            <p className="text-slate-300 text-xs sm:text-sm">{t("Update your training outcome status or view administrative analytics.")}</p>
           </div>
         </div>
 
@@ -426,7 +426,7 @@ export default function Home() {
             to="/my-training"
             className="bg-[#F2A900] hover:bg-amber-400 text-[#032447] px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-xs flex items-center gap-2"
           >
-            <span>Update My Outcome</span>
+            <span>{t("Update My Outcome")}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

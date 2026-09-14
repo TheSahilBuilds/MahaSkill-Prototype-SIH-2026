@@ -28,7 +28,7 @@ import {
 } from 'lucide-react';
 
 export default function OutcomeDashboard() {
-  const { language } = useApp();
+  const { language, t } = useApp();
 
   // Collapsible Filters Drawer State (COLLAPSED BY DEFAULT)
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -119,10 +119,10 @@ export default function OutcomeDashboard() {
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white mt-2">
-              Skilling Outcomes & Impact
+              {t("Maharashtra State Skilling Outcome Dashboard")}
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
-              How effectively are training programmes translating into employment and sustainable livelihood outcomes?
+              {t("Longitudinal outcome evaluation across 36 districts, training providers, and economic sectors.")}
             </p>
           </div>
 
